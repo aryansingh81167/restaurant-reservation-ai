@@ -1,9 +1,10 @@
 import { NextResponse } from 'next/server';
-import Anthropic from '@anthropic-ai/sdk';
+import { Groq } from 'groq-sdk';
 import { createClient } from '@/utils/supabase/server';
+import { env } from '@/env';
 
-const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
+const groq = new Groq({
+  apiKey: env.groqApiKey,
 });
 
 export async function POST(req: Request) {
@@ -51,37 +52,37 @@ You must return a valid JSON object with EXACTLY these keys:
 
 Example output:
 {
-  "reply": "Of course. I have prepared a corner booth on the 3rd floor for you at 20:00 this Friday, taking into account your preference for a quiet setting.",
+  "reply": "Of course. I have prepared a corner booth on the 3rd floor for you at 20:30 this Friday, taking into account your preference for a quiet setting.",
   "intent": "book",
   "reservation_draft": {
     "date": "2024-11-01",
-    "time": "20:00",
+    "time": "20:30",
     "guests": 2,
     "notes": "Corner booth, quiet setting"
   }
 }
 `;
 
-    const msg = await anthropic.messages.create({
-      model: "claude-3-5-sonnet-20241022", // Fallback to available sonnet model if claude-sonnet-4-6 isn't a standard alias
-      max_tokens: 1000,
-      temperature: 0.2,
-      system: systemPrompt,
+    const completion = await groq.chat.completions.create({
+      model: "llama-3.3-70b-versatile",
       messages: [
+        { role: "system", content: systemPrompt },
         { role: "user", content: message }
-      ]
+      ],
+      temperature: 0.2,
+      max_tokens: 1000,
+      response_format: { type: "json_object" }
     });
 
-    const responseContent = msg.content[0].type === 'text' ? msg.content[0].text : '{}';
+    const responseContent = completion.choices[0]?.message?.content || '{}';
     
     // Parse JSON
     let parsedResponse;
     try {
-      const jsonStr = responseContent.substring(responseContent.indexOf('{'), responseContent.lastIndexOf('}') + 1);
-      parsedResponse = JSON.parse(jsonStr);
+      parsedResponse = JSON.parse(responseContent);
     } catch (e) {
       parsedResponse = {
-        reply: responseContent,
+        reply: "I apologize, but I am unable to process your request at this moment.",
         intent: "enquire",
         reservation_draft: null
       };
@@ -89,7 +90,7 @@ Example output:
 
     // Optionally save to concierge_sessions in supabase
     if (session_id) {
-      // Append message logic here... (simplified for this iteration)
+      // Append message logic here
     }
 
     return NextResponse.json(parsedResponse);

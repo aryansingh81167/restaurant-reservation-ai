@@ -46,7 +46,7 @@ export default function ConciergeChat() {
       timestamp: new Date()
     };
 
-    setMessages(prev => [...prev, userMsg]);
+    setMessages((prev: Message[]) => [...prev, userMsg]);
     setInput("");
     setIsTyping(true);
 
@@ -69,7 +69,7 @@ export default function ConciergeChat() {
         draft: data.reservation_draft
       };
 
-      setMessages(prev => [...prev, aiMsg]);
+      setMessages((prev: Message[]) => [...prev, aiMsg]);
     } catch (error) {
       const errorMsg: Message = {
         id: (Date.now() + 1).toString(),
@@ -77,7 +77,7 @@ export default function ConciergeChat() {
         content: "I apologize, but I am currently unable to process your request. Please try again shortly.",
         timestamp: new Date()
       };
-      setMessages(prev => [...prev, errorMsg]);
+      setMessages((prev: Message[]) => [...prev, errorMsg]);
     } finally {
       setIsTyping(false);
     }
@@ -99,7 +99,7 @@ export default function ConciergeChat() {
       
       track("booking_completed");
       
-      setMessages(prev => [...prev, {
+      setMessages((prev: Message[]) => [...prev, {
         id: Date.now().toString(),
         role: "assistant",
         content: "Your reservation has been confirmed. We look forward to welcoming you to LUMIÈRE.",
