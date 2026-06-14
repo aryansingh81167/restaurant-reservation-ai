@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LUMIÈRE | Gastronomy Reimagined</title>
+<!-- Font Imports -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#f5f3ee",
+                    "primary": "#000000",
+                    "secondary-fixed": "#ffdea5",
+                    "on-tertiary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-background": "#1b1c19",
+                    "primary-fixed": "#e5e2e1",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#eae8e3",
+                    "on-primary-fixed-variant": "#474746",
+                    "tertiary-fixed": "#d0e9d4",
+                    "outline": "#747878",
+                    "tertiary-container": "#0b2013",
+                    "on-secondary-fixed": "#261900",
+                    "on-tertiary-fixed-variant": "#364c3c",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "background": "#fbf9f4",
+                    "outline-variant": "#c4c7c7",
+                    "surface-variant": "#e4e2dd",
+                    "surface-dim": "#dbdad5",
+                    "surface-container-highest": "#e4e2dd",
+                    "tertiary": "#000000",
+                    "on-primary-fixed": "#1c1b1b",
+                    "on-surface-variant": "#444748",
+                    "primary-container": "#1c1b1b",
+                    "surface-tint": "#5f5e5e",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed": "#0b2013",
+                    "surface-container": "#f0eee9",
+                    "on-primary-container": "#858383",
+                    "inverse-surface": "#30312e",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-container": "#728977",
+                    "surface": "#fbf9f4",
+                    "secondary-container": "#fed488",
+                    "on-error": "#ffffff",
+                    "on-surface": "#1b1c19",
+                    "inverse-primary": "#c8c6c5",
+                    "surface-bright": "#fbf9f4",
+                    "secondary": "#775a19",
+                    "secondary-fixed-dim": "#e9c176",
+                    "on-secondary-container": "#785a1a",
+                    "inverse-on-surface": "#f2f1ec",
+                    "tertiary-fixed-dim": "#b4cdb8",
+                    "on-secondary-fixed-variant": "#5d4201"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "gutter": "24px",
+                    "stack-lg": "32px",
+                    "margin-mobile": "20px",
+                    "margin-desktop": "64px",
+                    "stack-md": "16px",
+                    "section-gap": "80px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "interactive": ["Inter"],
+                    "headline-md": ["Playfair Display"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "display-lg": ["Playfair Display"],
+                    "headline-sm": ["Playfair Display"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "interactive": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #fbf9f4;
+            color: #1b1c19;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 48px 24px;
+        }
+        .reveal-sidebar {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .nav-underline-active {
+            position: relative;
+        }
+        .nav-underline-active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #775a19;
+        }
+        /* Custom scrollbar for refined UI */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #fbf9f4; }
+        ::-webkit-scrollbar-thumb { background: #e4e2dd; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #c4c7c7; }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- SideNavBar (Concierge/Settings Shell) -->
+<div class="fixed right-0 top-0 h-screen z-[60] w-80 bg-surface-container-low shadow-md translate-x-full reveal-sidebar flex flex-col p-stack-lg" id="side-nav">
+<div class="flex justify-between items-center mb-8">
+<h2 class="font-headline-sm text-headline-sm text-primary">Virtual Concierge</h2>
+<button class="p-2 hover:bg-surface-container-high transition-all rounded-full" onclick="toggleSidebar()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex items-center gap-4 mb-10 pb-6 border-b border-outline-variant">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-primary-fixed">
+<img alt="Maître d' Avatar" data-alt="A professional and elegant portrait of a Michelin-star restaurant maitre d wearing a sharp tailored charcoal suit. The background is a softly blurred, warm-lit luxury dining room with golden accents and crystal glassware. The lighting is soft and flattering, emphasizing a mood of elite hospitality and personalized service." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAqB5unhm97yVpxMxZvGaTulPOszNp1p4cb3g5M_XvIZT7o23tXTP14vMLYBSh-4LSGEaVd9GAu2hPvVnveqi-k2KdXcPYChNonqYLslupbaQaHTOML2kL3_v9jvnG1pFaUaLTyGqRwsR6KmEmxOBfBI_rWGSWQ8SYcWJq3dREGxy7mdLSrJrSLAvVfWfviGa6jFcEnTHMFQjJTtlnZ6Obq-5AeJ2SmVgLsbctDVVuRCV_vQ6mcPxhTTrEmn3soe2qnpQVfeSc9aw"/>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase">Personalized Dining Assistant</p>
+<p class="font-headline-sm text-headline-sm text-secondary">Concierge</p>
+</div>
+</div>
+<nav class="flex flex-col gap-6 flex-grow">
+<a class="text-primary font-semibold border-l-4 border-secondary pl-4 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">chat_bubble</span> Concierge
+            </a>
+<a class="text-on-surface-variant pl-4 hover:text-primary transition-all flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">settings</span> Preferences
+            </a>
+<a class="text-on-surface-variant pl-4 hover:text-primary transition-all flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">wine_bar</span> Wine List
+            </a>
+<a class="text-on-surface-variant pl-4 hover:text-primary transition-all flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">help</span> Help
+            </a>
+</nav>
+<button class="mt-auto bg-primary text-on-primary py-4 px-6 font-interactive text-interactive hover:opacity-80 transition-opacity">
+            Start New Inquiry
+        </button>
+</div>
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-background border-b border-outline-variant">
+<div class="max-w-container-max mx-auto px-margin-desktop py-stack-md flex justify-between items-center">
+<div class="flex items-center gap-8">
+<button class="md:hidden p-2" onclick="toggleSidebar()">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-display-lg text-display-lg text-primary tracking-tight">LUMIÈRE</h1>
+</div>
+<nav class="hidden md:flex gap-10 items-center">
+<a class="text-secondary font-bold border-b-2 border-secondary pb-1 font-label-caps text-label-caps uppercase" href="#">Menu</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-label-caps text-label-caps uppercase" href="#">Reservations</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-label-caps text-label-caps uppercase" href="#">My Bookings</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-label-caps text-label-caps uppercase" href="#">Contact</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden md:block font-label-caps text-label-caps text-on-surface-variant hover:text-primary px-4 py-2">Sign In</button>
+<button class="bg-primary text-on-primary px-8 py-3 font-label-caps text-label-caps tracking-widest hover:opacity-90 transition-opacity">BOOK NOW</button>
+<button class="hidden md:flex p-2 hover:bg-surface-container-high rounded-full transition-colors" onclick="toggleSidebar()">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-section-gap max-w-container-max mx-auto px-margin-desktop">
+<!-- Hero Branding -->
+<section class="mb-section-gap text-center space-y-stack-md">
+<p class="font-label-caps text-label-caps text-secondary tracking-[0.2em] uppercase">Michelin Star Experience</p>
+<h2 class="font-display-lg text-display-lg italic mx-auto max-w-3xl">An orchestration of season, terroir, and refined technique.</h2>
+</section>
+<!-- Category: Starters -->
+<section class="mb-section-gap">
+<div class="flex items-baseline justify-between border-b border-outline-variant pb-stack-sm mb-stack-lg">
+<h3 class="font-display-lg text-headline-md tracking-tight">Starters</h3>
+<span class="font-label-caps text-label-caps text-on-surface-variant italic">01 — L'OUVERTURE</span>
+</div>
+<div class="menu-grid">
+<!-- Item 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] overflow-hidden mb-stack-md bg-surface-container">
+<img alt="Hokkaido Scallops" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Close up of pan-seared Hokkaido Scallops presented with artisanal precision on a ceramic plate. The scallops are perfectly caramelized to a golden brown and sit atop a vibrant green pea purée with delicate edible flowers and microgreens. The lighting is crisp and high-end, reflecting a minimalist luxury restaurant aesthetic with soft wood textures in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIvnd-3wN_fWwUhP-EJXxglW9qmDzM8N0zntQdFM9_FRvTccBWEeaP-cH6ACo9Rk9o62ISwAQi17QhzORTR_lRmhzlVSAIosqHJpDo4kDmldSQi_sHgYiurgit0AfBFuFoBkxbnJd4OPn4_QnXAGfWxWGvDrohyJmrpDILUoQPy0aKHlOGh1GkmZWaAkA3nybAywSeqd2Ozv-cGVwtcB-78fskO8DouuJJV8ebN6AOd-sdG-oRQ8K44HHhIJP5a5ps7lqy4_GHVf4"/>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-headline-sm text-headline-sm">Hokkaido Scallops</h4>
+<span class="font-body-md text-body-md text-secondary">$38</span>
+</div>
+<p class="font-body-md text-on-surface-variant mb-4">Pan-seared pearls, minted pea emulsion, citrus foam, garden radish.</p>
+<div class="flex gap-2">
+<span class="px-2 py-1 bg-surface-container-low font-label-caps text-[10px] rounded">GF</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] overflow-hidden mb-stack-md bg-surface-container">
+<img alt="Heritage Burrata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A luxurious presentation of Heritage Burrata cheese served with heirloom tomatoes and basil oil. The burrata is creamy and white, set against vibrant red and orange tomatoes on a white porcelain dish. Subtle golden morning light pours over the dish, creating a high-contrast, editorial food photography style suitable for a Michelin-star menu." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCk65Gfaendf1LmpnpSeX0PIllJbSLguhfZrQjxraJGjWn0Wj8DgrZ4VUXWfEwRMg0hGs338cAzUL9gv7ZILXc_jPzU40FFX5pLoh10_EuosDPC8n_xztLLeOSdRSGS7FbtNMZ3XhEgP4FkuYsbJlrKOUQ7qcxQkz4DA77_S1d9-HOtHZTWjsbZEWfjLm1VehkZn8LzBxjO5NMOlBVJak-W_T0ls1EYnOhLajDBKvEPtRulW_pKYI4TxyJMn82Vw5OTKpp1ZERo258"/>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-headline-sm text-headline-sm">Heritage Burrata</h4>
+<span class="font-body-md text-body-md text-secondary">$32</span>
+</div>
+<p class="font-body-md text-on-surface-variant mb-4">Aged balsamic spheres, heirloom tomato essence, toasted pine nuts.</p>
+<div class="flex gap-2">
+<span class="px-2 py-1 bg-surface-container-low font-label-caps text-[10px] rounded">V</span>
+<span class="px-2 py-1 bg-surface-container-low font-label-caps text-[10px] rounded">GF</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Category: Main Courses -->
+<section class="mb-section-gap">
+<div class="flex items-baseline justify-between border-b border-outline-variant pb-stack-sm mb-stack-lg">
+<h3 class="font-display-lg text-headline-md tracking-tight">Main Courses</h3>
+<span class="font-label-caps text-label-caps text-on-surface-variant italic">02 — LE CŒUR</span>
+</div>
+<div class="menu-grid">
+<!-- Item 3 -->
+<div class="group cursor-pointer col-span-1 md:col-span-2 flex flex-col md:flex-row gap-8 items-center bg-white p-6 shadow-sm border border-outline-variant/30">
+<div class="w-full md:w-1/2 aspect-[16/9] overflow-hidden bg-surface-container">
+<img alt="A5 Wagyu Reserve" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Exquisite A5 Wagyu Reserve steak sliced to reveal a perfect medium-rare center, served with a velvety potato mousseline and périgord truffle shavings. The dish is presented on a minimalist white plate with a dark red wine reduction smear. The ambient lighting is moody and sophisticated, highlighting the rich marbling of the meat in a luxury dining atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAFDrROMen32Cy1oKvpfwd-GnGoOorgtjNgYhm_zv-F09fcunaJcf88LsbCQ-Hd1ZqFAjLkb6Ql-BbAJfybk_cZ41fQLkfKBLrTn3IgBgl2P5ytxlSo8FS2D-8PEKOtlBm3e9fHhm98IIuKUgbZVwl5NSN5nIwNdc2Q5HystDubjQmxkjiQmHHBHXvt2b4hkEIuV2mu4xNip43dqrXwTpDoHdg3yK301NMPU4iooVsvRUp1-ZF0rmkanORQDWCjF3vHlHs71hUv4U"/>
+</div>
+<div class="w-full md:w-1/2 pr-6">
+<div class="flex justify-between items-start mb-4">
+<h4 class="font-headline-md text-headline-md">A5 Wagyu Reserve</h4>
+<span class="font-body-lg text-body-lg text-secondary">$145</span>
+</div>
+<p class="font-body-lg text-on-surface-variant mb-6">Périgord truffle, smoked pomme purée, charred leeks, bordelaise reduction.</p>
+<div class="flex gap-3">
+<span class="px-3 py-1 bg-surface-container-low font-label-caps text-label-caps rounded-full">SIGNATURE</span>
+<span class="px-3 py-1 bg-surface-container-low font-label-caps text-label-caps rounded-full">GF</span>
+</div>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] overflow-hidden mb-stack-md bg-surface-container">
+<img alt="Wild Sea Bass" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Fillet of wild sea bass with crispy skin, served with butter-poached asparagus and a saffron beurre blanc sauce. The composition is elegant and asymmetrical on a textured stone plate. The color palette is light and airy, dominated by pale yellows, whites, and soft greens, evoking a coastal fine-dining experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEZAicp6JGQn1dwKVVg29UyL0vyDulQRxhO-uioI7eUV68Sy7MNgt1z05hImNKQoRZzZ0STsmayPhP6BJuoAo8RvnyhhIGTMzPhZa-wVFtAfx_-LLWvi3Tx-t43oBZRlcrdXbGtEhG6MJLL97zkC0wxEk7kfjg850Q_efyBf5M8Z7murteQL1yMZAyeNjWFKiYNuIxYIgXQq9F2Eh5_5OcUlTv5oTaOsCuFOWN4SBnVc7npwoHA3PhKfZR4nBZm0vdImnWigpIkV4"/>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-headline-sm text-headline-sm">Wild Sea Bass</h4>
+<span class="font-body-md text-body-md text-secondary">$52</span>
+</div>
+<p class="font-body-md text-on-surface-variant mb-4">Saffron broth, seasonal asparagus, fennel pollen, finger lime.</p>
+<div class="flex gap-2">
+<span class="px-2 py-1 bg-surface-container-low font-label-caps text-[10px] rounded">GF</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Category: Desserts -->
+<section class="mb-section-gap">
+<div class="flex items-baseline justify-between border-b border-outline-variant pb-stack-sm mb-stack-lg">
+<h3 class="font-display-lg text-headline-md tracking-tight">Desserts</h3>
+<span class="font-label-caps text-label-caps text-on-surface-variant italic">03 — LA FIN</span>
+</div>
+<div class="menu-grid">
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] overflow-hidden mb-stack-md bg-surface-container">
+<img alt="Noir Chocolate Fondant" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A decadent Noir Chocolate Fondant with a molten center being broken, revealing a rich chocolate flow. Served with a quenelle of Madagascar vanilla bean gelato and gold leaf garnish. The photography is dramatic with deep shadows and warm highlights, emphasizing the textures of the dark chocolate against a pristine white plate." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPLN2NGoEOOZ2ma6ZxWnSWgadScNvWVJ5s54Mbr7iC9smoSuBufK3KRW6148miarrJ2RQWquGiecBxPXfONlAQpGjjIxyetQJOPhakYanvrKh0vRHeb_NvHDlUoL_abvaAJWMGQdSAID7f-USQD0z3ZkpU6dfvJGGXDs_WwytmYaIUrhYvUOO9lqR1w2j8w_fGBUkLMPWtfSizNA2u7jrospXqtG_oLtxUGSWRwZcVcyXGqM7x0WMJ-Gl2SDtm9q1SKWnzNG_UdkM"/>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-headline-sm text-headline-sm">Noir Fondant</h4>
+<span class="font-body-md text-body-md text-secondary">$22</span>
+</div>
+<p class="font-body-md text-on-surface-variant">72% Araguani chocolate, gold leaf, vanilla bean gelato.</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] overflow-hidden mb-stack-md bg-surface-container">
+<img alt="Lemon Verbena Tart" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Deconstructed Lemon Verbena Tart featuring crisp shortbread crumbles, lemon curd dots, and delicate meringue peaks. Garnished with edible flowers and fresh mint. The lighting is bright and ethereal, highlighting the citrusy and refreshing nature of the dessert in a modern minimalist style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc-gwGP2Zyiyi76yqromkNiC-DUSMr9-CymK6TT3zcu1m4r5M_ek1RaM9BQ6fmfy85UTPaTgTXe7C-73dKZyYorsY3VW5AInu0HfRINLHNRge30wY3deMyWTi1SA5nixjiCO0CqdmNvkdKkhroaCdnJvsRGaehXuNwKawOgDDXVHOT-0wqqVB2kbrulWELh9mKrcGaxrE3y_iLmEoriKBd4fuUJGtT6dTc0VZdVL-ZQ0wDXgOuTyBo_Ps1cSMsbG6pIyPk6UJphGo"/>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-headline-sm text-headline-sm">Verbena Tart</h4>
+<span class="font-body-md text-body-md text-secondary">$18</span>
+</div>
+<p class="font-body-md text-on-surface-variant">Compressed berries, lime zest, shortbread soil.</p>
+</div>
+<div class="bg-surface-container-low p-8 flex flex-col justify-center border-l-4 border-secondary">
+<h4 class="font-headline-sm text-headline-sm mb-4">The Sommelier's Selection</h4>
+<p class="font-body-md mb-6 italic text-on-surface-variant">Curated pairings available for each course to elevate your dining journey.</p>
+<button class="text-secondary underline font-label-caps text-label-caps hover:text-primary transition-colors text-left uppercase tracking-widest">View Wine List</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest w-full py-section-gap px-margin-desktop">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div>
+<h1 class="font-display-lg text-display-lg text-primary mb-stack-md">LUMIÈRE</h1>
+<p class="font-body-md text-on-surface-variant max-w-xs">An unparalleled gastronomic journey focused on the purity of ingredients and the art of hospitality.</p>
+</div>
+<div class="space-y-4">
+<p class="font-label-caps text-label-caps uppercase tracking-widest text-primary mb-6">Explore</p>
+<div class="flex flex-col gap-3">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Sustainability</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Our Terroir</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Private Dining</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Careers</a>
+</div>
+</div>
+<div class="space-y-4">
+<p class="font-label-caps text-label-caps uppercase tracking-widest text-primary mb-6">Concierge</p>
+<div class="flex flex-col gap-3">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Terms of Service</a>
+<p class="text-on-surface-variant font-body-md mt-4">© 2024 Lumière Gastronomy. All rights reserved.</p>
+</div>
+</div>
+</div>
+</footer>
+<!-- Overlay for Sidebar -->
+<div class="fixed inset-0 bg-black/20 z-[55] hidden backdrop-blur-sm transition-opacity opacity-0" id="overlay" onclick="toggleSidebar()"></div>
+<script>
+        function toggleSidebar() {
+            const sideNav = document.getElementById('side-nav');
+            const overlay = document.getElementById('overlay');
+            
+            if (sideNav.classList.contains('translate-x-full')) {
+                sideNav.classList.remove('translate-x-full');
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.add('opacity-100'), 10);
+                document.body.style.overflow = 'hidden';
+            } else {
+                sideNav.classList.add('translate-x-full');
+                overlay.classList.remove('opacity-100');
+                setTimeout(() => overlay.classList.add('hidden'), 400);
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Add some atmospheric scroll behavior
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-sm');
+                header.classList.add('bg-white/95');
+                header.classList.add('backdrop-blur-md');
+            } else {
+                header.classList.remove('shadow-sm');
+                header.classList.remove('bg-white/95');
+                header.classList.remove('backdrop-blur-md');
+            }
+        });
+    </script>
+</body></html>

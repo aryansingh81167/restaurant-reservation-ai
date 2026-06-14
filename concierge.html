@@ -1,0 +1,332 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>LUMIÈRE | Member Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#d0e9d4",
+                        "tertiary-container": "#0b2013",
+                        "on-primary-fixed": "#1c1b1b",
+                        "error-container": "#ffdad6",
+                        "secondary": "#775a19",
+                        "surface-tint": "#5f5e5e",
+                        "inverse-surface": "#30312e",
+                        "surface-dim": "#dbdad5",
+                        "on-secondary": "#ffffff",
+                        "background": "#fbf9f4",
+                        "on-secondary-fixed": "#261900",
+                        "primary-container": "#1c1b1b",
+                        "surface-container-high": "#eae8e3",
+                        "outline": "#747878",
+                        "surface-container-low": "#f5f3ee",
+                        "secondary-fixed": "#ffdea5",
+                        "primary-fixed": "#e5e2e1",
+                        "on-surface-variant": "#444748",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "surface-bright": "#fbf9f4",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#e4e2dd",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "on-tertiary-fixed-variant": "#364c3c",
+                        "primary": "#000000",
+                        "surface-container": "#f0eee9",
+                        "outline-variant": "#c4c7c7",
+                        "tertiary": "#000000",
+                        "on-tertiary-container": "#728977",
+                        "on-secondary-container": "#785a1a",
+                        "tertiary-fixed-dim": "#b4cdb8",
+                        "on-background": "#1b1c19",
+                        "inverse-primary": "#c8c6c5",
+                        "on-primary-container": "#858383",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f2f1ec",
+                        "on-primary-fixed-variant": "#474746",
+                        "secondary-container": "#fed488",
+                        "on-tertiary-fixed": "#0b2013",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#e9c176",
+                        "on-surface": "#1b1c19",
+                        "surface-variant": "#e4e2dd",
+                        "surface": "#fbf9f4",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "stack-lg": "32px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "section-gap": "80px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "interactive": ["Inter"],
+                        "headline-sm": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Playfair Display"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "interactive": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .typing-dot {
+            width: 4px;
+            height: 4px;
+            background-color: #775a19;
+            border-radius: 50%;
+            display: inline-block;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1.0); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-40 bg-background border-b border-outline-variant">
+<div class="flex justify-between items-center px-margin-desktop py-stack-md w-full max-w-container-max mx-auto">
+<h1 class="font-display-lg text-[28px] md:text-display-lg text-primary tracking-tight">LUMIÈRE</h1>
+<nav class="hidden md:flex items-center gap-gutter"><a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Menu</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Menu</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Reservations</a>
+<a class="text-secondary font-bold border-b-2 border-secondary pb-1 font-label-caps text-label-caps" href="#">My Bookings</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Contact</a>
+</nav>
+<div class="flex items-center gap-4"><button class="p-2 rounded-full hover:bg-surface-container transition-colors md:hidden" id="mobile-menu-trigger"><span class="material-symbols-outlined text-primary">menu</span></button>
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors" id="theme-toggle">
+<span class="material-symbols-outlined text-primary" data-icon="dark_mode">dark_mode</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a sophisticated male diner with refined features, wearing a tailored charcoal suit jacket. The background is a soft-focus luxury restaurant interior with warm ambient lighting and golden accents, reflecting a high-end, exclusive membership atmosphere consistent with the Lumière brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNP7fYjkhiisnjOebIBcbs8O48FOjT6cnY1XhvKxMyeEvUdCt17h9q5jbK6d7qtEWln20jr86YkmMuGsOHpDaGCz-6W9O8uEX9mFgobghV-Pb6ISPeeKofaNIAG7yvlriIa4etvXkaWvglElM9UoeFgz1sboEyx-dGSg2EFIKdJlqayo0IQ9rVARCAra1_KAHytiQFRK3JpF-PYDJqUDxU98EbxKspn72AYe57SCitBR5g5zMVn27h_TdOML_Vhc0nJaOxRnlsyqE">
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Grid -->
+<main class="pt-[100px] min-h-screen px-margin-desktop max-w-container-max mx-auto grid grid-cols-12 gap-gutter relative">
+<!-- Dashboard Content -->
+<div class="col-span-12 lg:col-span-8 py-stack-lg">
+<header class="mb-stack-lg">
+<p class="font-label-caps text-label-caps text-secondary mb-2 uppercase tracking-widest">Member Portfolio</p>
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary">Welcome back, Julian.</h2>
+</header>
+<!-- Upcoming Reservations -->
+<section class="mb-section-gap">
+<div class="flex justify-between items-end mb-stack-md border-b border-outline-variant pb-2">
+<h3 class="font-headline-sm text-headline-sm">Active Reservations</h3>
+<button class="text-secondary font-label-caps text-label-caps hover:opacity-80 transition-opacity">VIEW ALL</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Reservation Card -->
+<div class="bg-surface-container-lowest border border-outline-variant p-stack-md hover:shadow-lg transition-shadow duration-300">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="font-label-caps text-label-caps text-secondary mb-1">OCTOBER 24, 20:00</p>
+<h4 class="font-headline-sm text-[20px] text-primary">L'Atelier de Joël Robuchon</h4>
+</div>
+<span class="material-symbols-outlined text-secondary" data-icon="stars" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant font-body-md text-[14px]">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]" data-icon="group">group</span> 2 Guests</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]" data-icon="table_restaurant">table_restaurant</span> Window Side</span>
+</div>
+<div class="mt-6 flex gap-3">
+<button class="flex-1 py-2 text-on-primary bg-primary font-label-caps text-label-caps hover:opacity-90 transition-opacity">MODIFY</button>
+<button class="flex-1 py-2 text-secondary border border-secondary font-label-caps text-label-caps hover:bg-secondary-container transition-colors">DETAILS</button>
+</div>
+</div>
+<!-- Reservation Card -->
+<div class="bg-surface-container-lowest border border-outline-variant p-stack-md hover:shadow-lg transition-shadow duration-300">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="font-label-caps text-label-caps text-secondary mb-1">NOVEMBER 02, 19:30</p>
+<h4 class="font-headline-sm text-[20px] text-primary">The Alchemist Private Suite</h4>
+</div>
+<span class="material-symbols-outlined text-secondary" data-icon="wine_bar">wine_bar</span>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant font-body-md text-[14px]">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]" data-icon="group">group</span> 4 Guests</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]" data-icon="verified_user">verified_user</span> VIP Access</span>
+</div>
+<div class="mt-6 flex gap-3">
+<button class="flex-1 py-2 text-on-primary bg-primary font-label-caps text-label-caps hover:opacity-90 transition-opacity">MODIFY</button>
+<button class="flex-1 py-2 text-secondary border border-secondary font-label-caps text-label-caps hover:bg-secondary-container transition-colors">DETAILS</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Membership Tier Info -->
+<section class="bg-primary text-on-primary p-stack-lg overflow-hidden relative">
+<div class="relative z-10">
+<p class="font-label-caps text-label-caps text-on-primary-container mb-2">CURRENT TIER</p>
+<h3 class="font-display-lg text-[32px] md:text-headline-md mb-4 italic">The Platinum Circle</h3>
+<p class="max-w-md font-body-md text-on-primary-container mb-8">Exclusive access to global pop-ups, priority booking for Michelin-starred establishments, and your dedicated virtual concierge.</p>
+<button class="px-8 py-3 bg-on-primary text-primary font-label-caps text-label-caps hover:bg-secondary-container transition-colors">EXPLORE PERKS</button>
+</div>
+<!-- Abstract visual element -->
+<div class="absolute right-[-10%] top-[-20%] w-[300px] h-[300px] rounded-full border border-on-primary/10"></div>
+<div class="absolute right-[-5%] top-[-10%] w-[250px] h-[250px] rounded-full border border-on-primary/20"></div>
+</section>
+</div>
+<!-- Virtual Concierge Side Panel (The "Lock") -->
+<aside class="col-span-12 lg:col-span-4 fixed right-0 top-0 h-screen w-full md:w-[400px] z-50 bg-surface-container-low shadow-md border-l border-outline-variant flex flex-col p-0 overflow-hidden transform transition-transform duration-500 ease-in-out">
+<!-- Concierge Header -->
+<div class="p-stack-md bg-background border-b border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-secondary">
+<img alt="Maître d' Avatar" class="w-full h-full object-cover" data-alt="A distinguished and friendly professional maître d' in a refined tailored tuxedo, smiling warmly. The setting is an elegant, dimly lit restaurant foyer with golden backlighting and warm wooden textures, embodying the essence of high-end virtual concierge service and personal dining assistance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdE8490cgowuNANDuSQflVwvaOZYj1N9T_Wf4ztwulAfIMK-mZp0AG7Mk_s_U5HRDZMETZzsaLcm4spHjTS5btuqHTKw4K7AVDcrnV1msBw8Vopar9_iG9tnWj_nM0fOvaguJoyd5P0dlYmrp6e0lqF2JcQ7kO_C8woS5-ef5IHUvex994zeNqByk9iDxNDZSp3Jcn7JqO-OXCrNC0LO1vU9bhb96AZqbDk0KPH8x9b0S8qXTFmUFaQSDQBEI6H-HLD5ep0S2xjXs">
+</div>
+<div>
+<h3 class="font-headline-sm text-[18px] leading-tight text-primary">Virtual Concierge</h3>
+<p class="font-label-caps text-[10px] text-secondary">PERSONALIZED ASSISTANT • ONLINE</p>
+</div>
+</div>
+<button class="p-2 hover:bg-surface-container rounded-full text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<!-- Chat Area -->
+<div class="flex-1 overflow-y-auto p-stack-md space-y-stack-lg bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-opacity-5">
+<!-- AI Message -->
+<div class="flex flex-col items-start max-w-[85%]">
+<p class="font-label-caps text-[10px] text-on-surface-variant mb-1 ml-1">LUMIÈRE CONCIERGE • 14:20</p>
+<div class="bg-surface-container-highest p-stack-md rounded-tr-xl rounded-br-xl rounded-bl-xl border border-outline-variant">
+<p class="font-headline-sm text-[16px] italic leading-relaxed text-primary">
+                            "Good afternoon, Mr. Julian. It is a pleasure to assist you again. How may I refine your dining calendar today?"
+                        </p>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex flex-col items-end max-w-[85%] ml-auto">
+<p class="font-label-caps text-[10px] text-on-surface-variant mb-1 mr-1">YOU • 14:21</p>
+<div class="bg-primary text-on-primary p-stack-md rounded-tl-xl rounded-bl-xl rounded-br-xl">
+<p class="font-body-md text-[15px]">
+                            A quiet booth for two on Friday night, please. Ideally somewhere with a view of the skyline.
+                        </p>
+</div>
+</div>
+<!-- AI Typing/Thinking -->
+<div class="flex flex-col items-start max-w-[85%]">
+<div class="bg-surface-container-highest p-stack-md rounded-tr-xl rounded-br-xl rounded-bl-xl border border-outline-variant">
+<p class="font-headline-sm text-[16px] italic text-primary flex items-center gap-2">
+                            Curating options for Friday evening
+                            <span class="flex gap-1 items-center mt-1">
+<span class="typing-dot"></span>
+<span class="typing-dot"></span>
+<span class="typing-dot"></span>
+</span>
+</p>
+</div>
+</div>
+</div>
+<!-- Interaction Points -->
+<div class="p-stack-md bg-background border-t border-outline-variant">
+<div class="flex gap-2 mb-4 overflow-x-auto pb-2 scrollbar-hide">
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container border border-outline-variant font-label-caps text-[11px] hover:border-secondary transition-colors">VIEW SKYLINE SPOTS</button>
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container border border-outline-variant font-label-caps text-[11px] hover:border-secondary transition-colors">SEARCH PARIS</button>
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container border border-outline-variant font-label-caps text-[11px] hover:border-secondary transition-colors">MY PREFERENCES</button>
+</div>
+<div class="relative group">
+<textarea class="w-full bg-surface-container-low border-0 border-b border-outline-variant focus:ring-0 focus:border-secondary py-3 px-1 font-body-md text-[15px] resize-none min-h-[50px] placeholder:italic transition-all" placeholder="Speak with your Maître d'..."></textarea>
+<button class="absolute right-0 bottom-3 text-secondary hover:scale-110 transition-transform flex items-center justify-center p-2">
+<span class="material-symbols-outlined" data-icon="send" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+<p class="mt-4 text-center font-label-caps text-[9px] text-on-surface-variant opacity-50 tracking-widest">ENCRYPTED END-TO-END CONCIERGE SERVICE</p>
+</div>
+</aside>
+</main>
+<!-- Footer -->
+<footer class="w-full py-section-gap px-margin-desktop bg-surface-container-highest mt-section-gap">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div>
+<h4 class="font-display-lg text-[24px] text-primary mb-stack-md">LUMIÈRE</h4>
+<p class="font-body-md text-on-surface-variant max-w-xs">Elevating the art of dining through unparalleled access and personalized gastronomy curation.</p>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="font-label-caps text-label-caps text-primary">EXPLORE</h5>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Our Story</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Curated Collections</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Global Cities</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Partnerships</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="font-label-caps text-label-caps text-primary">LEGAL</h5>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Sustainability</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Careers</a>
+</div>
+</div>
+<div class="max-w-container-max mx-auto mt-stack-lg pt-stack-md border-t border-outline-variant flex justify-between items-center">
+<p class="font-label-caps text-[11px] text-on-surface-variant">© 2024 Lumière Gastronomy. All rights reserved.</p>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary" data-icon="public">public</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary" data-icon="share">share</span>
+</div>
+</div>
+</footer>
+<!-- FAB (Suppressed on Details/Settings as per hierarchy, but shown here for Member Home) -->
+<button class="fixed bottom-margin-desktop left-margin-desktop bg-secondary text-on-secondary w-14 h-14 rounded-full flex items-center justify-center shadow-md hover:scale-105 active:scale-95 transition-all z-30 lg:hidden">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+</button>
+<script>
+        // Simple dark mode toggle for demonstration
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const icon = themeToggle.querySelector('.material-symbols-outlined');
+            icon.innerText = html.classList.contains('dark') ? 'light_mode' : 'dark_mode';
+        });
+
+        // Simple scroll behavior for top nav shadow
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-sm');
+            } else {
+                header.classList.remove('shadow-sm');
+            }
+        });
+    </script>
+
+
+<aside id="side-navigation" class="fixed top-0 left-0 h-screen w-64 bg-surface-container-low border-r border-outline-variant z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col"><div class="p-stack-md border-b border-outline-variant flex justify-between items-center"><h3 class="font-headline-sm text-[18px] text-primary">Navigation</h3><button class="p-2 hover:bg-surface-container rounded-full" onclick="document.getElementById('side-navigation').classList.add('-translate-x-full')"><span class="material-symbols-outlined">close</span></button></div><nav class="flex-1 py-stack-md"><a href="#" class="flex items-center gap-4 px-stack-md py-3 hover:bg-surface-container transition-colors text-on-surface-variant"><span class="material-symbols-outlined">account_circle</span><span class="font-label-caps text-label-caps">Account</span></a><a href="#" class="flex items-center gap-4 px-stack-md py-3 hover:bg-surface-container transition-colors text-on-surface-variant"><span class="material-symbols-outlined">settings</span><span class="font-label-caps text-label-caps">Preferences</span></a><a href="#" class="flex items-center gap-4 px-stack-md py-3 hover:bg-surface-container transition-colors text-on-surface-variant"><span class="material-symbols-outlined">wine_bar</span><span class="font-label-caps text-label-caps">Wine List</span></a><a href="#" class="flex items-center gap-4 px-stack-md py-3 hover:bg-surface-container transition-colors text-on-surface-variant"><span class="material-symbols-outlined">help</span><span class="font-label-caps text-label-caps">Help</span></a></nav></aside></body></html>

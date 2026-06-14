@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LUMIÈRE | Member Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#d0e9d4",
+                    "tertiary-container": "#0b2013",
+                    "on-primary-fixed": "#1c1b1b",
+                    "error-container": "#ffdad6",
+                    "secondary": "#775a19",
+                    "surface-tint": "#5f5e5e",
+                    "inverse-surface": "#30312e",
+                    "surface-dim": "#dbdad5",
+                    "on-secondary": "#ffffff",
+                    "background": "#fbf9f4",
+                    "on-secondary-fixed": "#261900",
+                    "primary-container": "#1c1b1b",
+                    "surface-container-high": "#eae8e3",
+                    "outline": "#747878",
+                    "surface-container-low": "#f5f3ee",
+                    "secondary-fixed": "#ffdea5",
+                    "primary-fixed": "#e5e2e1",
+                    "on-surface-variant": "#444748",
+                    "on-secondary-fixed-variant": "#5d4201",
+                    "surface-bright": "#fbf9f4",
+                    "on-primary": "#ffffff",
+                    "surface-container-highest": "#e4e2dd",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "on-tertiary-fixed-variant": "#364c3c",
+                    "primary": "#000000",
+                    "surface-container": "#f0eee9",
+                    "outline-variant": "#c4c7c7",
+                    "tertiary": "#000000",
+                    "on-tertiary-container": "#728977",
+                    "on-secondary-container": "#785a1a",
+                    "tertiary-fixed-dim": "#b4cdb8",
+                    "on-background": "#1b1c19",
+                    "inverse-primary": "#c8c6c5",
+                    "on-primary-container": "#858383",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#f2f1ec",
+                    "on-primary-fixed-variant": "#474746",
+                    "secondary-container": "#fed488",
+                    "on-tertiary-fixed": "#0b2013",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#e9c176",
+                    "on-surface": "#1b1c19",
+                    "surface-variant": "#e4e2dd",
+                    "surface": "#fbf9f4",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "stack-lg": "32px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px",
+                    "section-gap": "80px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "display-lg-mobile": ["Playfair Display"],
+                    "display-lg": ["Playfair Display"],
+                    "interactive": ["Inter"],
+                    "headline-sm": ["Playfair Display"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Playfair Display"],
+                    "label-caps": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "interactive": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .luxury-shadow { box-shadow: 0px 12px 32px rgba(0, 0, 0, 0.04); }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #EAEAEA; border-radius: 10px; }
+        
+        .dark .luxury-shadow { box-shadow: 0px 12px 32px rgba(0, 0, 0, 0.4); }
+        
+        /* Smooth transitions for concierge drawer */
+        .concierge-panel { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    </style>
+</head>
+<body class="bg-background text-on-surface transition-colors duration-300">
+<!-- Top Navigation Bar -->
+<header class="bg-background fixed top-0 w-full z-40 border-b border-outline-variant">
+<nav class="flex justify-between items-center px-margin-desktop py-stack-md w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-stack-lg">
+<button class="p-2 hover:bg-surface-container transition-colors rounded-full flex items-center justify-center" id="main-menu-trigger">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button><span class="font-display-lg text-headline-sm text-primary tracking-tight">LUMIÈRE</span>
+<div class="hidden md:flex gap-8">
+<a class="text-secondary font-bold border-b-2 border-secondary pb-1 font-label-caps text-label-caps" href="#">Menu</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Reservations</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-label-caps text-label-caps" href="#">My Bookings</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Contact</a>
+</div>
+</div>
+<div class="flex items-center gap-6"><button class="p-2 hover:bg-surface-container transition-colors rounded-full flex items-center justify-center md:hidden" id="mobile-menu-trigger">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button>
+<!-- Dark Mode Toggle -->
+<button class="p-2 hover:bg-surface-container transition-colors rounded-full flex items-center justify-center" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-symbols-outlined text-primary">dark_mode</span>
+</button>
+<div class="flex gap-4">
+<button class="bg-primary text-on-primary px-6 py-2 text-label-caps font-label-caps hover:opacity-80 transition-opacity active:scale-95 duration-200">Book Now</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant overflow-hidden">
+<img alt="Member Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfTi46MlEnHRnd-h651zFp9ApWF8q04mXRqrLTd239e5Z_RAC9shdJR4T3vT93FW5CSh_vsr6lve0ZPUGBej5a1G7xR-o10vHCbsZ7LpePsw_vkCmvjmY5xQf0AK-1tHjqtSYVAIVcK5u6bhLBkBYtYwPFX06gFEKHBW8TmV9reuryQ--lRJ-zm1TsxMS3gnj6sbOcKtMZ6CIObFtPPSZU7SCzliHuHifpvm_s-5uUz7fh8btCtx_LWDB-xGSlYY-tYeTzNoT5Bfw"/>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<main class="pt-[100px] min-h-screen px-margin-desktop max-w-container-max mx-auto grid grid-cols-12 gap-gutter pb-section-gap">
+<!-- Main Content Area (8 Columns) -->
+<section class="col-span-12 lg:col-span-8 py-stack-lg">
+<div class="mb-section-gap">
+<p class="font-label-caps text-label-caps text-secondary mb-2 tracking-widest">WELCOME BACK, ALEXANDER</p>
+<h1 class="font-display-lg text-display-lg text-primary mb-4">Your Table Awaits.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Manage your upcoming gastronomic experiences or browse through your history of exceptional evenings at Lumière.</p>
+</div>
+<!-- Reservations Section -->
+<div class="space-y-stack-lg">
+<div class="flex justify-between items-end border-b border-outline-variant pb-stack-sm">
+<h2 class="font-headline-md text-headline-md text-primary">Your Reservations</h2>
+<div class="flex gap-4">
+<button class="text-secondary font-label-caps text-label-caps border-b border-secondary">UPCOMING</button>
+<button class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors">PAST</button>
+</div>
+</div>
+<!-- Reservation Cards (Bento/Modern Layout) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+<!-- Card 1 -->
+<div class="bg-white dark:bg-surface-container-low luxury-shadow group overflow-hidden border border-outline-variant hover:border-secondary transition-all duration-300">
+<div class="relative h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A moody, high-end restaurant interior at night, showing a dimly lit private booth with gold accents and crystal glassware. The lighting is focused and cinematic, highlighting the fine texture of a white linen tablecloth. Dark charcoal walls contrast with warm glowing candlelight, creating a sophisticated and intimate atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDve96tsb4h3wVF59HlPRP_EB80WOoxd6jGUS4Pma6XDAi57xlV0S1vdZfIGGrC2YnIGg5K2oFQQ-vNiN69kOA7LOTzMPVjHqvf8hVW6wPdSUspbv-V2JEsIR4qggNfVNa4ntCccbF9mbZj_gp-ZeJO1ZyqwPFZTobsvq0avMPa8ir97SfEnCQ8PGxb973CkBGQkygDGCtdLTP52e8IN66ygfFWBez-m4Ya4Cy6c-nECwFTl8jhCcCKDZwLa9hRwkgEefilNttFXMc"/>
+<div class="absolute top-4 right-4 bg-secondary text-white px-3 py-1 font-label-caps text-[10px] tracking-widest">CONFIRMED</div>
+</div>
+<div class="p-stack-md">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-sm text-headline-sm">Chef's Table Experience</h3>
+<span class="material-symbols-outlined text-secondary">stars</span>
+</div>
+<div class="space-y-1 mb-6">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="font-body-md text-body-md">Saturday, Nov 16, 2024</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="font-body-md text-body-md">20:30 • 4 Guests</span>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="flex-1 border border-primary py-2 font-label-caps text-label-caps hover:bg-primary hover:text-on-primary transition-all">MANAGE</button>
+<button class="p-2 border border-outline-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white dark:bg-surface-container-low luxury-shadow group overflow-hidden border border-outline-variant hover:border-secondary transition-all duration-300">
+<div class="relative h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A macro shot of a sophisticated cocktail with a gold garnish resting on a dark marble bar top. The scene is illuminated by warm, amber architectural lighting that casts elegant shadows. The background is softly blurred, showing the refined silhouette of a luxury lounge environment with charcoal and gold design elements." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKYcJk5quXPY_zd-g9JkjfgnknRdPoVYubb_Gctrs2hZb8HC-aUZclCXy5buM61g8CdJaeiqejdwjKAPIZ2lwiKnur4rGc0NnM8xTCOUJ5rEfWxMgQR49EE5SKqQIKh47NaGFIkKWI450UNiLYYMwh1BSglCQObx5qwigOSIWMlLKbU0uIc30ZtZaQt1hXovdclWB-OqzsHNhef08OMB5ZpwJreHBGfoDi0yG5Ho_XAUrZUVTiI5T3xQ6r13RFkTYFdkm5mCAzih0"/>
+<div class="absolute top-4 right-4 bg-surface-container-highest text-on-surface px-3 py-1 font-label-caps text-[10px] tracking-widest">PENDING</div>
+</div>
+<div class="p-stack-md">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-sm text-headline-sm">Terrace Sunset Tasting</h3>
+<span class="material-symbols-outlined text-on-surface-variant">wb_sunny</span>
+</div>
+<div class="space-y-1 mb-6">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="font-body-md text-body-md">Friday, Dec 01, 2024</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="font-body-md text-body-md">17:00 • 2 Guests</span>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="flex-1 border border-primary py-2 font-label-caps text-label-caps hover:bg-primary hover:text-on-primary transition-all">MANAGE</button>
+<button class="p-2 border border-outline-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Personalized Preferences (Added for Bento depth) -->
+<div class="mt-section-gap bg-surface-container-low p-stack-lg border border-outline-variant">
+<div class="flex items-start justify-between mb-stack-md">
+<div>
+<h3 class="font-headline-sm text-headline-sm mb-1">Your Preferences</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Curating your experience based on your history.</p>
+</div>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div class="flex flex-wrap gap-3">
+<span class="bg-surface-container-highest px-4 py-2 font-label-caps text-label-caps rounded-full border border-outline-variant">PESCATARIAN</span>
+<span class="bg-surface-container-highest px-4 py-2 font-label-caps text-label-caps rounded-full border border-outline-variant">BOOTH SEATING</span>
+<span class="bg-surface-container-highest px-4 py-2 font-label-caps text-label-caps rounded-full border border-outline-variant">CHARDONNAY PREFERENCE</span>
+<span class="bg-surface-container-highest px-4 py-2 font-label-caps text-label-caps rounded-full border border-outline-variant">QUIET TABLE</span>
+</div>
+</div>
+</section>
+<!-- Right Side Panel (4 Columns) - Booking & AI Concierge -->
+<aside class="col-span-12 lg:col-span-4 py-stack-lg">
+<div class="bg-white dark:bg-surface-container-low border border-outline-variant luxury-shadow sticky top-[100px] overflow-hidden flex flex-col" id="side-panel">
+<!-- Panel Header -->
+<div class="p-stack-md border-b border-outline-variant bg-surface-container-lowest flex items-center justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm" id="panel-title">New Reservation</h3>
+<p class="font-label-caps text-[10px] text-secondary tracking-widest uppercase" id="panel-subtitle">Standard Booking</p>
+</div>
+<span class="material-symbols-outlined text-secondary" id="panel-icon">calendar_month</span>
+</div>
+<!-- Content Area: Switchable between Booking and Chat -->
+<div class="p-stack-md space-y-stack-md" id="booking-interface">
+<!-- Date Picker Simulation -->
+<div>
+<label class="font-label-caps text-label-caps block mb-4">SELECT DATE</label>
+<div class="grid grid-cols-7 gap-2 text-center">
+<span class="text-on-surface-variant text-[11px] font-medium">S</span>
+<span class="text-on-surface-variant text-[11px] font-medium">M</span>
+<span class="text-on-surface-variant text-[11px] font-medium">T</span>
+<span class="text-on-surface-variant text-[11px] font-medium">W</span>
+<span class="text-on-surface-variant text-[11px] font-medium">T</span>
+<span class="text-on-surface-variant text-[11px] font-medium">F</span>
+<span class="text-on-surface-variant text-[11px] font-medium">S</span>
+<button class="p-2 text-on-surface-variant opacity-30 text-body-md">27</button>
+<button class="p-2 text-on-surface-variant opacity-30 text-body-md">28</button>
+<button class="p-2 text-on-surface-variant opacity-30 text-body-md">29</button>
+<button class="p-2 text-on-surface-variant opacity-30 text-body-md">30</button>
+<button class="p-2 text-on-surface-variant opacity-30 text-body-md">31</button>
+<button class="p-2 hover:bg-surface-container text-primary text-body-md">1</button>
+<button class="p-2 hover:bg-surface-container text-primary text-body-md">2</button>
+<button class="p-2 hover:bg-surface-container text-primary text-body-md">3</button>
+<button class="p-2 hover:bg-surface-container text-primary text-body-md">4</button>
+<button class="p-2 hover:bg-surface-container text-primary text-body-md">5</button>
+<button class="p-2 bg-secondary text-white text-body-md">6</button>
+<button class="p-2 hover:bg-surface-container text-primary text-body-md">7</button>
+<button class="p-2 hover:bg-surface-container text-primary text-body-md">8</button>
+<button class="p-2 hover:bg-surface-container text-primary text-body-md">9</button>
+</div>
+</div>
+<!-- Time Slots -->
+<div>
+<label class="font-label-caps text-label-caps block mb-4">AVAILABLE TIMES</label>
+<div class="grid grid-cols-3 gap-2">
+<button class="border border-outline-variant py-2 text-label-caps hover:border-secondary transition-colors">18:30</button>
+<button class="border border-secondary bg-secondary/5 py-2 text-label-caps text-secondary">19:00</button>
+<button class="border border-outline-variant py-2 text-label-caps hover:border-secondary transition-colors">19:30</button>
+<button class="border border-outline-variant py-2 text-label-caps hover:border-secondary transition-colors">20:00</button>
+<button class="border border-outline-variant py-2 text-label-caps hover:border-secondary transition-colors">20:30</button>
+<button class="border border-outline-variant py-2 text-label-caps hover:border-secondary transition-colors">21:00</button>
+</div>
+</div>
+<!-- Guests Selection -->
+<div class="pt-4 border-t border-outline-variant">
+<div class="flex justify-between items-center mb-6">
+<span class="font-label-caps text-label-caps">GUESTS</span>
+<div class="flex items-center gap-4">
+<button class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center">-</button>
+<span class="font-headline-sm">2</span>
+<button class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center">+</button>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 font-label-caps text-label-caps tracking-widest hover:opacity-90 active:scale-95 transition-all mb-4">RESERVE TABLE</button>
+<!-- AI Toggle Button -->
+<div class="relative py-4 border-t border-outline-variant mt-stack-md">
+<button class="w-full border border-secondary text-secondary py-4 font-label-caps text-label-caps tracking-widest flex items-center justify-center gap-3 hover:bg-secondary/5 transition-all" onclick="toggleAIInterface()">
+<span class="material-symbols-outlined text-[20px]">temp_preferences_custom</span>
+                                BOOK WITH AI
+                            </button>
+<p class="text-[10px] text-center text-on-surface-variant mt-3 font-body-md uppercase tracking-tighter">Instant availability &amp; curated requests via Maître d' AI</p>
+</div>
+</div>
+</div>
+<!-- Chat Interface (Hidden initially) -->
+<div class="hidden flex flex-col h-[500px]" id="chat-interface">
+<div class="flex-1 overflow-y-auto p-stack-md space-y-stack-md custom-scrollbar">
+<!-- Message from AI -->
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-white text-[16px]">support_agent</span>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg rounded-tl-none border border-outline-variant">
+<p class="font-serif text-body-md leading-relaxed">Good evening, Alexander. I see you're looking at Nov 6th. Would you like me to find a quiet table near the window as per your preference?</p>
+</div>
+</div>
+<!-- Message from User -->
+<div class="flex gap-3 justify-end">
+<div class="bg-primary text-on-primary p-4 rounded-lg rounded-tr-none">
+<p class="font-body-md leading-relaxed">Yes, please. Also, can we ensure the tasting menu includes a pescatarian option?</p>
+</div>
+</div>
+<!-- AI Typing -->
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-white text-[16px]">support_agent</span>
+</div>
+<div class="bg-surface-container-low p-3 rounded-lg flex items-center gap-1">
+<div class="w-1.5 h-1.5 bg-secondary rounded-full animate-bounce"></div>
+<div class="w-1.5 h-1.5 bg-secondary rounded-full animate-bounce [animation-delay:0.2s]"></div>
+<div class="w-1.5 h-1.5 bg-secondary rounded-full animate-bounce [animation-delay:0.4s]"></div>
+</div>
+</div>
+</div>
+<!-- Input -->
+<div class="p-stack-md border-t border-outline-variant bg-surface-container-lowest">
+<div class="relative flex items-center">
+<input class="w-full border-none border-b border-outline-variant focus:ring-0 focus:border-secondary bg-transparent py-4 pr-12 font-body-md italic" placeholder="Type your request..." type="text"/>
+<button class="absolute right-0 p-2 text-secondary hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+<button class="mt-4 text-[11px] font-label-caps text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1" onclick="toggleAIInterface()">
+<span class="material-symbols-outlined text-[14px]">arrow_back</span>
+                            BACK TO STANDARD BOOKING
+                        </button>
+</div>
+</div>
+</div>
+</aside>
+</main>
+<!-- Simple Footer -->
+<footer class="bg-surface-container-highest py-stack-lg px-margin-desktop border-t border-outline-variant">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-stack-md">
+<span class="font-display-lg text-headline-sm text-primary">LUMIÈRE</span>
+<div class="flex gap-stack-lg">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Terms</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Sustainability</a>
+</div>
+<p class="text-on-surface-variant font-body-md text-[12px]">© 2024 Lumière Gastronomy. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        function toggleAIInterface() {
+            const bookingInt = document.getElementById('booking-interface');
+            const chatInt = document.getElementById('chat-interface');
+            const title = document.getElementById('panel-title');
+            const subtitle = document.getElementById('panel-subtitle');
+            const icon = document.getElementById('panel-icon');
+
+            if (chatInt.classList.contains('hidden')) {
+                // To AI
+                bookingInt.classList.add('hidden');
+                chatInt.classList.remove('hidden');
+                title.textContent = "Maître d' AI";
+                subtitle.textContent = "Personal Concierge";
+                icon.textContent = "auto_fix_high";
+                icon.classList.add('animate-pulse');
+            } else {
+                // To Booking
+                chatInt.classList.add('hidden');
+                bookingInt.classList.remove('hidden');
+                title.textContent = "New Reservation";
+                subtitle.textContent = "Standard Booking";
+                icon.textContent = "calendar_month";
+                icon.classList.remove('animate-pulse');
+            }
+        }
+    </script>
+<div class="fixed inset-0 bg-black/20 backdrop-blur-sm z-50 hidden transition-opacity duration-300" id="sidebar-overlay"></div>
+<aside class="fixed top-0 right-0 h-full w-80 bg-background border-l border-outline-variant z-50 translate-x-full transition-transform duration-300 ease-in-out" id="side-navigation">
+<div class="p-margin-desktop flex flex-col h-full">
+<div class="flex justify-between items-center mb-stack-lg">
+<span class="font-display-lg text-headline-sm text-primary">LUMIÈRE</span>
+<button class="p-2 hover:bg-surface-container rounded-full" id="close-sidebar">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<nav class="flex flex-col gap-6"><a class="text-headline-sm font-headline-sm hover:text-secondary transition-colors" href="#">Menu</a>
+<a class="text-headline-sm font-headline-sm hover:text-secondary transition-colors" href="#">Reservations</a>
+<a class="text-headline-sm font-headline-sm hover:text-secondary transition-colors" href="#">My Bookings</a>
+<a class="text-headline-sm font-headline-sm hover:text-secondary transition-colors" href="#">Account Settings</a>
+<a class="text-headline-sm font-headline-sm hover:text-secondary transition-colors" href="#">Preferences</a>
+<a class="text-headline-sm font-headline-sm hover:text-secondary transition-colors" href="#">Wine List</a>
+<a class="text-headline-sm font-headline-sm hover:text-secondary transition-colors" href="#">Help</a><button class="mt-4 bg-secondary text-white py-4 font-label-caps text-label-caps tracking-widest hover:opacity-90 active:scale-95 transition-all">
+  VIEW MENU
+</button></nav>
+<div class="mt-auto pt-stack-lg border-t border-outline-variant">
+<p class="text-label-caps font-label-caps text-on-surface-variant text-secondary">MEMBER STATUS: PLATINUM</p>
+</div>
+</div>
+</aside></body></html>
