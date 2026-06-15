@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function MenuPage() {
   return (
     <>
@@ -118,7 +120,7 @@ export default function MenuPage() {
             <div className="bg-surface-container-low p-8 flex flex-col justify-center border-l-4 border-secondary">
               <h4 className="font-headline-sm text-headline-sm mb-4">The Sommelier's Selection</h4>
               <p className="font-body-md mb-6 italic text-on-surface-variant">Curated pairings available for each course to elevate your dining journey.</p>
-              <button className="text-secondary underline font-label-caps text-label-caps hover:text-primary transition-colors text-left uppercase tracking-widest">View Wine List</button>
+              <Link href="/wine-list" className="text-secondary underline font-label-caps text-label-caps hover:text-primary transition-colors text-left uppercase tracking-widest block w-fit">View Wine List</Link>
             </div>
           </div>
         </section>

@@ -75,7 +75,7 @@ export default function LoginPage() {
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow-[0px_12px_32px_rgba(0,0,0,0.04)] sm:rounded-lg sm:px-10 border border-outline-variant/30">
+        <div className="bg-surface-container-low py-8 px-4 shadow-[0px_12px_32px_rgba(0,0,0,0.04)] sm:rounded-lg sm:px-10 border border-outline-variant/30 transition-colors duration-500">
           <form className="space-y-6" onSubmit={handleSubmit}>
             {isSignUp && (
               <div>
@@ -90,7 +90,7 @@ export default function LoginPage() {
                     required={isSignUp}
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
-                    className="appearance-none block w-full px-3 py-2 border border-outline-variant/50 rounded-sm shadow-sm placeholder-outline focus:outline-none focus:ring-secondary focus:border-secondary sm:text-sm font-body bg-surface-container-lowest"
+                    className="appearance-none block w-full px-3 py-2 border border-outline-variant/50 rounded-sm shadow-sm placeholder-outline focus:outline-none focus:ring-secondary focus:border-secondary sm:text-sm font-body bg-surface-container-lowest text-on-surface transition-colors"
                     placeholder="Alexander"
                   />
                 </div>
@@ -110,7 +110,7 @@ export default function LoginPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border border-outline-variant/50 rounded-sm shadow-sm placeholder-outline focus:outline-none focus:ring-secondary focus:border-secondary sm:text-sm font-body bg-surface-container-lowest"
+                  className="appearance-none block w-full px-3 py-2 border border-outline-variant/50 rounded-sm shadow-sm placeholder-outline focus:outline-none focus:ring-secondary focus:border-secondary sm:text-sm font-body bg-surface-container-lowest text-on-surface transition-colors"
                   placeholder="name@example.com"
                 />
               </div>
@@ -129,7 +129,7 @@ export default function LoginPage() {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border border-outline-variant/50 rounded-sm shadow-sm placeholder-outline focus:outline-none focus:ring-secondary focus:border-secondary sm:text-sm font-body bg-surface-container-lowest"
+                  className="appearance-none block w-full px-3 py-2 border border-outline-variant/50 rounded-sm shadow-sm placeholder-outline focus:outline-none focus:ring-secondary focus:border-secondary sm:text-sm font-body bg-surface-container-lowest text-on-surface transition-colors"
                   placeholder="••••••••"
                 />
               </div>
@@ -147,13 +147,13 @@ export default function LoginPage() {
           </form>
 
           {errorMsg && (
-            <div className="mt-4 p-3 bg-red-50 border border-red-200 text-red-600 text-sm font-body rounded">
+            <div className="mt-4 p-3 bg-error-container border border-error text-on-error-container text-sm font-body rounded transition-colors">
               {errorMsg}
             </div>
           )}
 
           {message && (
-            <div className="mt-4 p-3 bg-green-50 border border-green-200 text-green-700 text-sm font-body rounded">
+            <div className="mt-4 p-3 bg-tertiary-container border border-tertiary text-on-tertiary-container text-sm font-body rounded transition-colors">
               {message}
             </div>
           )}
@@ -173,7 +173,7 @@ export default function LoginPage() {
                 <div className="w-full border-t border-outline-variant/30" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-outline font-body">
+                <span className="px-2 bg-surface-container-low text-on-surface-variant font-body transition-colors">
                   Or continue with
                 </span>
               </div>
@@ -182,7 +182,7 @@ export default function LoginPage() {
             <div className="mt-6">
               <button
                 onClick={handleGoogleSignIn}
-                className="w-full flex justify-center items-center gap-2 py-3 px-4 border border-outline-variant rounded-sm shadow-sm bg-white text-sm font-interactive uppercase tracking-widest text-primary hover:bg-surface-container-low transition-colors"
+                className="w-full flex justify-center items-center gap-2 py-3 px-4 border border-outline-variant rounded-sm shadow-sm bg-surface-container-lowest text-sm font-interactive uppercase tracking-widest text-primary hover:bg-surface-container-high transition-colors"
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24">
                   <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>

@@ -73,11 +73,35 @@ export default function ConciergeDrawer() {
           </Link>
         </nav>
         <div className="mt-auto pt-stack-lg border-t border-outline-variant">
-          <div className="bg-surface-container p-stack-md rounded mb-stack-md">
-            <p className="font-label-caps text-label-caps text-on-surface-variant mb-2">LAST INQUIRY</p>
-            <p className="font-body-md italic text-on-surface">"Looking for a quiet booth for two on Friday night..."</p>
-          </div>
-          <Link href="/dashboard" onClick={() => setIsOpen(false)} className="w-full block text-center bg-primary text-on-primary py-4 font-label-caps text-label-caps hover:opacity-90 active:scale-95 transition-all">Start New Inquiry</Link>
+          <form 
+            onSubmit={(e) => {
+              e.preventDefault();
+              const formData = new FormData(e.currentTarget);
+              const query = formData.get('query');
+              if (query) {
+                setIsOpen(false);
+                window.location.href = `/dashboard?q=${encodeURIComponent(query.toString())}`;
+              }
+            }}
+            className="flex flex-col gap-4"
+          >
+            <div className="relative">
+              <input 
+                type="text" 
+                name="query"
+                placeholder="Ask the concierge..." 
+                className="w-full bg-surface-container p-4 pr-12 rounded border border-outline-variant/30 focus:border-secondary focus:outline-none transition-colors"
+                required
+              />
+              <button 
+                type="submit" 
+                className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-secondary hover:text-primary transition-colors flex items-center justify-center"
+              >
+                <span className="material-symbols-outlined">send</span>
+              </button>
+            </div>
+            <Link href="/dashboard" onClick={() => setIsOpen(false)} className="w-full block text-center bg-primary text-on-primary py-4 font-label-caps text-label-caps hover:opacity-90 active:scale-95 transition-all">Go to Full Concierge</Link>
+          </form>
         </div>
       </aside>
 

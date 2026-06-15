@@ -46,7 +46,8 @@ export default function ConciergeChat() {
       timestamp: new Date()
     };
 
-    setMessages((prev: Message[]) => [...prev, userMsg]);
+    const newMessages = [...messages, userMsg];
+    setMessages(newMessages);
     setInput("");
     setIsTyping(true);
 
@@ -54,19 +55,29 @@ export default function ConciergeChat() {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text, session_id: "default" })
+        body: JSON.stringify({ 
+          message: text, 
+          history: newMessages.slice(1).map(m => ({ role: m.role, content: m.content })),
+        })
       });
 
       const data = await res.json();
 
-      if (!res.ok) throw new Error(data.message || "Failed to fetch");
+      if (!res.ok) throw new Error(data.reply || data.message || "Failed to fetch");
+
+      let replyContent = data.reply;
+      
+      // If the AI confirmed and saved a booking, append confirmation
+      if (data.booking_saved && data.reservation_draft) {
+        replyContent += `\n\n✓ Reservation saved: ${data.reservation_draft.date} at ${data.reservation_draft.time} for ${data.reservation_draft.guests} guests.`;
+      }
 
       const aiMsg: Message = {
         id: (Date.now() + 1).toString(),
         role: "assistant",
-        content: data.reply,
+        content: replyContent,
         timestamp: new Date(),
-        draft: data.reservation_draft
+        draft: data.confirmed ? undefined : data.reservation_draft,
       };
 
       setMessages((prev: Message[]) => [...prev, aiMsg]);
