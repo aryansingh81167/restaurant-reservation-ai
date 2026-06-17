@@ -111,8 +111,8 @@ export default function Sidebar({ userEmail }: { userEmail: string }) {
         onClick={() => setIsCollapsed(false)}
         className={`fixed z-50 transition-all duration-300 flex items-center justify-center 
           lg:left-4 lg:top-[18px] lg:p-2 lg:bg-transparent lg:text-primary lg:hover:bg-surface-container lg:rounded-sm
-          max-lg:bottom-6 max-lg:right-6 max-lg:p-4 max-lg:bg-primary max-lg:text-on-primary max-lg:rounded-full max-lg:shadow-2xl max-lg:hover:scale-105
-          ${isCollapsed ? 'opacity-100 lg:translate-x-0 max-lg:translate-y-0' : 'opacity-0 lg:-translate-x-10 max-lg:translate-y-20 pointer-events-none'}`}
+          max-lg:top-[14px] max-lg:left-4 max-lg:p-1 max-lg:bg-transparent max-lg:text-primary max-lg:rounded-sm max-lg:hover:bg-surface-container
+          ${isCollapsed ? 'opacity-100 lg:translate-x-0 max-lg:translate-y-0' : 'opacity-0 lg:-translate-x-10 max-lg:-translate-x-10 pointer-events-none'}`}
         title="Open sidebar"
       >
         <span className="material-symbols-outlined text-[28px]">menu</span>

@@ -41,9 +41,13 @@ export default function TopNavBar() {
 
   return (
     <header className="fixed top-0 left-0 w-full z-40 bg-background/80 backdrop-blur-xl border-b border-outline-variant/30 transition-all duration-300">
-      <div className="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-stack-md w-full max-w-container-max mx-auto">
-        <div className="flex items-center transition-all duration-300 ease-in-out" style={{ transform: 'translateX(var(--sidebar-offset, 0px))' }}>
-          <Link href="/" className="font-display-lg text-display-lg text-primary tracking-tight hover:opacity-80 transition-opacity">LUMIÈRE</Link>
+      <div className="flex justify-between items-center px-4 md:px-margin-desktop py-3 md:py-stack-md w-full max-w-container-max mx-auto h-[60px] md:h-auto">
+        
+        {/* Spacer for Mobile Sidebar Toggle to sit perfectly on left */}
+        <div className="w-10 md:hidden flex-shrink-0"></div>
+
+        <div className="flex items-center justify-center flex-1 md:flex-none md:justify-start transition-all duration-300 ease-in-out" style={{ transform: 'translateX(var(--sidebar-offset, 0px))' }}>
+          <Link href="/" className="font-display-md text-[24px] md:font-display-lg md:text-display-lg text-primary tracking-tight hover:opacity-80 transition-opacity">LUMIÈRE</Link>
         </div>
         <div className="flex items-center space-x-6 md:space-x-10">
           <nav className="hidden md:flex items-center space-x-8">
@@ -89,12 +93,12 @@ export default function TopNavBar() {
             <Link href="/login" className="hidden md:block text-on-surface font-medium hover:text-secondary transition-colors font-label-caps text-label-caps uppercase tracking-widest">Sign In</Link>
           )}
 
-          <Link href="/dashboard" className="bg-primary text-on-primary px-8 py-3 font-label-caps text-label-caps hover:bg-surface-tint active:scale-95 transition-all duration-300 text-center uppercase tracking-widest shadow-lg shadow-primary/10 hover:shadow-primary/20 rounded-sm">Book Now</Link>
+          <Link href="/dashboard" className="hidden md:block bg-primary text-on-primary px-8 py-3 font-label-caps text-label-caps hover:bg-surface-tint active:scale-95 transition-all duration-300 text-center uppercase tracking-widest shadow-lg shadow-primary/10 hover:shadow-primary/20 rounded-sm">Book Now</Link>
           
           <button 
             onClick={() => setShowMobileNav(!showMobileNav)}
-            className="md:hidden flex items-center hover:text-secondary transition-colors">
-            <span className="material-symbols-outlined text-primary">{showMobileNav ? 'close' : 'menu'}</span>
+            className="md:hidden flex items-center justify-end w-10 h-10 hover:text-secondary transition-colors">
+            <span className="material-symbols-outlined text-[28px] text-primary">{showMobileNav ? 'close' : 'menu'}</span>
           </button>
         </div>
       </div>

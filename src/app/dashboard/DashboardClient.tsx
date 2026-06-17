@@ -204,7 +204,7 @@ export default function DashboardClient({
   };
 
   return (
-    <div className="flex flex-col-reverse lg:grid lg:grid-cols-12 gap-8 xl:gap-12 w-full h-full">
+    <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8 xl:gap-12 w-full h-full">
       {/* Main Content Area */}
       <section className="col-span-12 lg:col-span-7 xl:col-span-8">
         <div className="mb-section-gap animate-fade-in-up">
@@ -357,7 +357,7 @@ export default function DashboardClient({
                   {/* Date Picker */}
                   <div>
                     <label className="font-label-caps text-label-caps block mb-4 text-on-surface-variant tracking-widest">SELECT DATE</label>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    <div className="grid grid-cols-4 gap-1 sm:gap-2">
                       {availableDays.slice(0, 8).map(day => (
                         <button 
                           key={day.date}
@@ -374,7 +374,7 @@ export default function DashboardClient({
                   {/* Time Picker */}
                   <div>
                     <label className="font-label-caps text-label-caps block mb-4 text-on-surface-variant tracking-widest">SELECT TIME</label>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    <div className="grid grid-cols-4 gap-1 sm:gap-2">
                       {AVAILABLE_TIMES.map(time => (
                         <button 
                           key={time}
