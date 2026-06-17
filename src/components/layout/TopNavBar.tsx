@@ -55,7 +55,7 @@ export default function TopNavBar() {
 
   return (
     <header className="fixed top-0 left-0 w-full z-40 bg-background/80 backdrop-blur-xl border-b border-outline-variant/30 transition-all duration-300">
-      <div className="flex justify-between items-center px-margin-desktop py-stack-md w-full max-w-container-max mx-auto">
+      <div className="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-stack-md w-full max-w-container-max mx-auto">
         <Link href="/" className="font-display-lg text-display-lg text-primary tracking-tight hover:opacity-80 transition-opacity">LUMIÈRE</Link>
         <nav className="hidden md:flex items-center space-x-12">
           <Link href="/menu" className="text-on-surface-variant font-medium hover:text-primary transition-all duration-300 font-label-caps text-label-caps uppercase tracking-widest relative group">
@@ -120,7 +120,7 @@ export default function TopNavBar() {
       {/* Mobile Nav */}
       {showMobileNav && (
         <div className="md:hidden bg-surface-container-low border-t border-outline-variant/30 animate-fade-in">
-          <nav className="flex flex-col px-margin-desktop py-4 space-y-4">
+          <nav className="flex flex-col px-margin-mobile md:px-margin-desktop py-4 space-y-4">
             <Link href="/menu" onClick={() => setShowMobileNav(false)} className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface hover:text-primary transition-colors py-2">Menu</Link>
             <Link href="/dashboard" onClick={() => setShowMobileNav(false)} className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface hover:text-primary transition-colors py-2">Reservations</Link>
             <Link href="/dashboard" onClick={() => setShowMobileNav(false)} className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface hover:text-primary transition-colors py-2">My Bookings</Link>

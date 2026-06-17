@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function MenuPage() {
   return (
     <>
-      <main className="pb-section-gap max-w-container-max mx-auto px-margin-desktop">
+      <main className="pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
         {/* Hero Branding */}
         <section className="mb-section-gap text-center space-y-stack-md pt-8">
           <p className="font-label-caps text-label-caps text-secondary tracking-[0.2em] uppercase">Michelin Star Experience</p>

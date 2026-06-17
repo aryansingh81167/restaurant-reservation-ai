@@ -13,7 +13,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-surface-container-highest w-full py-section-gap px-margin-desktop grid grid-cols-1 md:grid-cols-3 gap-gutter">
+    <footer className="bg-surface-container-highest w-full py-section-gap px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-3 gap-gutter">
       <div className="space-y-stack-md">
         <h3 className="font-display-lg text-display-lg text-primary">LUMIÈRE</h3>
         <p className="font-body-md text-body-md text-on-surface-variant max-w-xs">Crafting exceptional dining experiences through seamless technology and timeless hospitality.</p>

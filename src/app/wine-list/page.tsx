@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function WineListPage() {
   return (
-    <main className="pb-section-gap max-w-container-max mx-auto px-margin-desktop pt-8 min-h-[80vh]">
+    <main className="pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-8 min-h-[80vh]">
       <div className="mb-stack-lg">
         <Link href="/menu" className="text-secondary font-label-caps text-label-caps hover:text-primary transition-colors uppercase tracking-widest flex items-center gap-2">
           <span className="material-symbols-outlined text-[16px]">arrow_back</span>

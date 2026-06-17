@@ -166,7 +166,7 @@ export default function DashboardClient({
   };
 
   return (
-    <div className="pt-8 min-h-screen px-margin-desktop max-w-container-max mx-auto grid grid-cols-12 gap-gutter pb-section-gap">
+    <div className="pt-8 min-h-screen px-4 md:px-margin-desktop max-w-container-max mx-auto flex flex-col-reverse lg:grid lg:grid-cols-12 gap-gutter pb-section-gap">
       {/* Main Content Area */}
       <section className="col-span-12 lg:col-span-8 py-stack-lg">
         <div className="mb-section-gap animate-fade-in-up">
@@ -308,7 +308,7 @@ export default function DashboardClient({
                   {/* Date Picker */}
                   <div>
                     <label className="font-label-caps text-label-caps block mb-4 text-on-surface-variant tracking-widest">SELECT DATE</label>
-                    <div className="grid grid-cols-4 gap-2">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                       {availableDays.slice(0, 8).map(day => (
                         <button 
                           key={day.date}
@@ -325,7 +325,7 @@ export default function DashboardClient({
                   {/* Time Picker */}
                   <div>
                     <label className="font-label-caps text-label-caps block mb-4 text-on-surface-variant tracking-widest">SELECT TIME</label>
-                    <div className="grid grid-cols-4 gap-2">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                       {AVAILABLE_TIMES.map(time => (
                         <button 
                           key={time}
@@ -340,7 +340,7 @@ export default function DashboardClient({
                   {/* Guest Count */}
                   <div>
                     <label className="font-label-caps text-label-caps block mb-4 text-on-surface-variant tracking-widest">PARTY SIZE</label>
-                    <div className="grid grid-cols-8 gap-1">
+                    <div className="grid grid-cols-4 sm:grid-cols-8 gap-1">
                       {GUEST_OPTIONS.map(num => (
                         <button 
                           key={num}
