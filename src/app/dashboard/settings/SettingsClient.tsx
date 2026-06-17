@@ -38,8 +38,8 @@ export default function SettingsClient({ user, initialPreferences }: { user: any
   };
 
   return (
-    <div className="pt-8 min-h-screen px-4 md:px-margin-desktop max-w-container-max mx-auto flex flex-col gap-gutter pb-section-gap">
-      <div className="mb-section-gap animate-fade-in-up mt-24">
+    <div className="flex flex-col gap-gutter w-full">
+      <div className="mb-section-gap animate-fade-in-up">
         <Link href="/dashboard" className="text-secondary hover:text-primary transition-colors flex items-center gap-2 mb-4 font-label-caps text-label-caps uppercase tracking-widest w-fit">
           <span className="material-symbols-outlined text-[16px]">arrow_back</span>
           Back to Dashboard

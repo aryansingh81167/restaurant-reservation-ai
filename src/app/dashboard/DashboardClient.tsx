@@ -197,7 +197,7 @@ export default function DashboardClient({
   };
 
   return (
-    <div className="pt-8 min-h-screen px-4 md:px-margin-desktop max-w-container-max mx-auto flex flex-col-reverse lg:grid lg:grid-cols-12 gap-gutter pb-section-gap">
+    <div className="flex flex-col-reverse xl:grid xl:grid-cols-12 gap-gutter w-full">
       {/* Main Content Area */}
       <section className="col-span-12 lg:col-span-8 py-stack-lg">
         <div className="mb-section-gap animate-fade-in-up">
