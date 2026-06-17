@@ -7,7 +7,6 @@ import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 
 export default function TopNavBar() {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
   const [showMenu, setShowMenu] = useState(false);
   const [showMobileNav, setShowMobileNav] = useState(false);
@@ -15,13 +14,6 @@ export default function TopNavBar() {
   const router = useRouter();
 
   useEffect(() => {
-    // Initialize dark mode class safely
-    if (document.body.classList.contains('dark') || 
-        window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setIsDarkMode(true);
-      document.body.classList.add('dark');
-    }
-
     // Check auth state
     const checkUser = async () => {
       const { data: { user } } = await supabase.auth.getUser();
@@ -37,15 +29,7 @@ export default function TopNavBar() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const toggleDarkMode = () => {
-    const nextTheme = !isDarkMode;
-    setIsDarkMode(nextTheme);
-    if (nextTheme) {
-      document.body.classList.add('dark');
-    } else {
-      document.body.classList.remove('dark');
-    }
-  };
+
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
@@ -74,14 +58,7 @@ export default function TopNavBar() {
           </Link>
         </nav>
         <div className="flex items-center space-x-gutter">
-          <button 
-            onClick={toggleDarkMode}
-            aria-label="Toggle Dark Mode" 
-            className="p-2 hover:bg-surface-container-high transition-all rounded-full flex items-center hover:rotate-12 duration-300">
-            <span className="material-symbols-outlined text-primary">
-              {isDarkMode ? 'light_mode' : 'dark_mode'}
-            </span>
-          </button>
+
 
           {user ? (
             <div className="relative">
