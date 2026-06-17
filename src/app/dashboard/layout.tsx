@@ -8,10 +8,10 @@ export default async function DashboardLayout({ children }: { children: React.Re
   if (!user) return <>{children}</>;
 
   return (
-    <div className="pt-[120px] min-h-screen px-4 md:px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row gap-gutter pb-section-gap">
+    <div className="min-h-screen w-full flex bg-background">
       <Sidebar userEmail={user.email || ""} />
       {/* Main Content */}
-      <main className="flex-1 min-w-0 transition-all duration-300">
+      <main className="flex-1 min-w-0 transition-all duration-300 pt-[72px] px-4 sm:px-8 md:px-12 lg:px-16 pb-12 w-full max-w-[1600px] mx-auto">
         {children}
       </main>
     </div>

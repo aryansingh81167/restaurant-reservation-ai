@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { track } from "@vercel/analytics";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface Message {
   role: 'user' | 'assistant';
@@ -43,7 +43,14 @@ export default function DashboardClient({
   reservations: any[];
 }) {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [isAI, setIsAI] = useState(false);
+
+  useEffect(() => {
+    if (searchParams?.get('ai') === 'true') {
+      setIsAI(true);
+    }
+  }, [searchParams]);
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [selectedGuests, setSelectedGuests] = useState(2);
@@ -197,9 +204,9 @@ export default function DashboardClient({
   };
 
   return (
-    <div className="flex flex-col-reverse xl:grid xl:grid-cols-12 gap-gutter w-full">
+    <div className="flex flex-col-reverse lg:grid lg:grid-cols-12 gap-8 xl:gap-12 w-full h-full">
       {/* Main Content Area */}
-      <section className="col-span-12 lg:col-span-8 py-stack-lg">
+      <section className="col-span-12 lg:col-span-7 xl:col-span-8">
         <div className="mb-section-gap animate-fade-in-up">
           <p className="font-label-caps text-label-caps text-secondary mb-2 tracking-widest uppercase flex items-center gap-2">
             <span className="w-1 h-1 rounded-full bg-secondary"></span>
@@ -315,8 +322,8 @@ export default function DashboardClient({
       </section>
 
       {/* Right Side Panel */}
-      <aside className="col-span-12 lg:col-span-4 py-stack-lg">
-        <div className="glass-panel rounded-sm shadow-2xl sticky top-[100px] overflow-hidden flex flex-col animate-fade-in-up" style={{ animationDelay: '0.3s' }} id="side-panel">
+      <aside className="col-span-12 lg:col-span-5 xl:col-span-4">
+        <div className="glass-panel rounded-sm shadow-2xl sticky top-[80px] overflow-hidden flex flex-col animate-fade-in-up" style={{ animationDelay: '0.3s' }} id="side-panel">
           <div className="p-stack-md border-b border-outline-variant/20 bg-white/40 dark:bg-white/5 flex items-center justify-between">
             <div>
               <h3 className="font-headline-sm text-headline-sm text-primary">{isAI ? "Maître d' AI" : "New Reservation"}</h3>

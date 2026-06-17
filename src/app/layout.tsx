@@ -4,7 +4,6 @@ import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import TopNavBar from "@/components/layout/TopNavBar";
 import Footer from "@/components/layout/Footer";
-import ConciergeDrawer from "@/components/ConciergeDrawer";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair-display",
@@ -45,7 +44,6 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <ConciergeDrawer />
         <Analytics />
       </body>
     </html>

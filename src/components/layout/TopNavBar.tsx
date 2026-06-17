@@ -42,7 +42,9 @@ export default function TopNavBar() {
   return (
     <header className="fixed top-0 left-0 w-full z-40 bg-background/80 backdrop-blur-xl border-b border-outline-variant/30 transition-all duration-300">
       <div className="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-stack-md w-full max-w-container-max mx-auto">
-        <Link href="/" className="font-display-lg text-display-lg text-primary tracking-tight hover:opacity-80 transition-opacity">LUMIÈRE</Link>
+        <div className="flex items-center transition-all duration-300 ease-in-out" style={{ transform: 'translateX(var(--sidebar-offset, 0px))' }}>
+          <Link href="/" className="font-display-lg text-display-lg text-primary tracking-tight hover:opacity-80 transition-opacity">LUMIÈRE</Link>
+        </div>
         <div className="flex items-center space-x-6 md:space-x-10">
           <nav className="hidden md:flex items-center space-x-8">
             <Link href="/about" className="text-on-surface-variant font-medium hover:text-primary transition-all duration-300 font-label-caps text-label-caps uppercase tracking-widest relative group">
