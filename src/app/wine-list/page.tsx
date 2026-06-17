@@ -12,7 +12,7 @@ export default function WineListPage() {
 
       <section className="mb-section-gap text-center space-y-stack-md">
         <p className="font-label-caps text-label-caps text-secondary tracking-[0.2em] uppercase">The Cellar</p>
-        <h2 className="font-display-lg text-display-lg italic mx-auto max-w-3xl">Our Sommelier's Reserve</h2>
+        <h2 className="font-display-lg text-display-lg italic mx-auto max-w-3xl">Our Sommelier&apos;s Reserve</h2>
       </section>
 
       <section className="max-w-3xl mx-auto space-y-stack-lg">

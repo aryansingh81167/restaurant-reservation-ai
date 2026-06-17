@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { track } from "@vercel/analytics";
 import { useRouter } from "next/navigation";
 
@@ -49,6 +50,7 @@ export default function DashboardClient({
   const [bookingStatus, setBookingStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [bookingError, setBookingError] = useState('');
   const [reservations, setReservations] = useState(initialReservations);
+  const [confirmCancelId, setConfirmCancelId] = useState<string | null>(null);
 
   const availableDays = getNextDays(14);
 
@@ -106,6 +108,7 @@ export default function DashboardClient({
 
   useEffect(() => {
     scrollToBottom();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messages, isTyping]);
 
   const handleSendMessage = async () => {
@@ -191,7 +194,7 @@ export default function DashboardClient({
               reservations.map((res: any, idx: number) => (
                 <div key={res.id || idx} className="bg-white/50 backdrop-blur-sm dark:bg-surface-container-low luxury-shadow group overflow-hidden border border-outline-variant/30 hover:border-secondary/50 hover:shadow-2xl transition-all duration-500 rounded-sm flex flex-col">
                   <div className="relative h-48 overflow-hidden bg-surface-container">
-                    <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDve96tsb4h3wVF59HlPRP_EB80WOoxd6jGUS4Pma6XDAi57xlV0S1vdZfIGGrC2YnIGg5K2oFQQ-vNiN69kOA7LOTzMPVjHqvf8hVW6wPdSUspbv-V2JEsIR4qggNfVNa4ntCccbF9mbZj_gp-ZeJO1ZyqwPFZTobsvq0avMPa8ir97SfEnCQ8PGxb973CkBGQkygDGCtdLTP52e8IN66ygfFWBez-m4Ya4Cy6c-nECwFTl8jhCcCKDZwLa9hRwkgEefilNttFXMc" alt="Fine dining at Lumière" />
+                    <Image fill className="object-cover group-hover:scale-110 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDve96tsb4h3wVF59HlPRP_EB80WOoxd6jGUS4Pma6XDAi57xlV0S1vdZfIGGrC2YnIGg5K2oFQQ-vNiN69kOA7LOTzMPVjHqvf8hVW6wPdSUspbv-V2JEsIR4qggNfVNa4ntCccbF9mbZj_gp-ZeJO1ZyqwPFZTobsvq0avMPa8ir97SfEnCQ8PGxb973CkBGQkygDGCtdLTP52e8IN66ygfFWBez-m4Ya4Cy6c-nECwFTl8jhCcCKDZwLa9hRwkgEefilNttFXMc" alt="Fine dining at Lumière" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div className={`absolute top-4 right-4 backdrop-blur-md text-white px-3 py-1 font-label-caps text-[10px] tracking-widest uppercase shadow-lg rounded-sm ${res.status === 'confirmed' ? 'bg-secondary/90' : res.status === 'cancelled' ? 'bg-red-500/90' : 'bg-secondary/90'}`}>{res.status || 'CONFIRMED'}</div>
                   </div>
@@ -219,17 +222,30 @@ export default function DashboardClient({
                       </div>
                     </div>
                     <div className="flex gap-3">
-                      <button 
-                        onClick={async () => {
-                          if (window.confirm('Are you sure you want to cancel this reservation?')) {
-                            // We could call an API here; for now just remove from local state
-                            setReservations(prev => prev.filter(r => r.id !== res.id));
-                            track('reservation_cancelled');
-                          }
-                        }}
-                        className="flex-1 border border-outline-variant py-3 font-label-caps text-label-caps hover:bg-error-container hover:text-on-error-container hover:border-error transition-all duration-300 uppercase tracking-widest rounded-sm text-center">
-                        CANCEL
-                      </button>
+                      {confirmCancelId === res.id ? (
+                        <div className="flex-1 flex gap-2">
+                          <button 
+                            onClick={() => {
+                              setReservations(prev => prev.filter(r => r.id !== res.id));
+                              setConfirmCancelId(null);
+                              track('reservation_cancelled');
+                            }}
+                            className="flex-1 bg-error text-on-error py-3 font-label-caps text-label-caps hover:opacity-90 transition-opacity rounded-sm">
+                            CONFIRM
+                          </button>
+                          <button 
+                            onClick={() => setConfirmCancelId(null)}
+                            className="flex-1 border border-outline-variant py-3 font-label-caps text-label-caps hover:bg-surface-container rounded-sm">
+                            BACK
+                          </button>
+                        </div>
+                      ) : (
+                        <button 
+                          onClick={() => setConfirmCancelId(res.id)}
+                          className="flex-1 border border-outline-variant py-3 font-label-caps text-label-caps hover:bg-error-container hover:text-on-error-container hover:border-error transition-all duration-300 uppercase tracking-widest rounded-sm text-center">
+                          CANCEL
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>

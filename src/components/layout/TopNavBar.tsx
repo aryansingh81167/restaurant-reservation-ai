@@ -2,19 +2,20 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import type { User } from "@supabase/supabase-js";
 import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 
 export default function TopNavBar() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [user, setUser] = useState<any>(null);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+  const [user, setUser] = useState<User | null>(null);
   const [showMenu, setShowMenu] = useState(false);
   const [showMobileNav, setShowMobileNav] = useState(false);
   const supabase = createClient();
   const router = useRouter();
 
   useEffect(() => {
-    // Check initial dark mode preference
+    // Initialize dark mode class safely
     if (document.body.classList.contains('dark') || 
         window.matchMedia('(prefers-color-scheme: dark)').matches) {
       setIsDarkMode(true);
@@ -33,6 +34,7 @@ export default function TopNavBar() {
     });
 
     return () => subscription.unsubscribe();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const toggleDarkMode = () => {

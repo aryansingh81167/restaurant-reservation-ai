@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { track } from "@vercel/analytics";
 
 export default function Home() {
@@ -8,7 +9,7 @@ export default function Home() {
     <>
       {/* Hero Section */}
       <section className="relative w-full h-[85vh] overflow-hidden">
-        <img alt="Lumiere Dining Room" className="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA89NkEdiguBqjfmCmLEqJ0Xok6DeXpBqKqiJ9ulm69xxeKfmoi28hKAprh_SV0E44eGZEbUf8e_XJj3odb1_1Mp00dVHJlyCOhX6V9RO1x_A_dI8lUuE7CNCTjTd5r1Y--mzxNzmO7Rnf_WZCxML9ju_5F2f0Sa4J54cCarV_u8-af97fpqV4jI-DAduJysGMqxltHOHBnJN7KcOj3Un4-3mNCSUUPcBpQdEFbhRtfkG7MJWQSSLXuqBaJ-17Hy482OY51-wI_IjY" />
+        <Image alt="Lumiere Dining Room" fill priority className="object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA89NkEdiguBqjfmCmLEqJ0Xok6DeXpBqKqiJ9ulm69xxeKfmoi28hKAprh_SV0E44eGZEbUf8e_XJj3odb1_1Mp00dVHJlyCOhX6V9RO1x_A_dI8lUuE7CNCTjTd5r1Y--mzxNzmO7Rnf_WZCxML9ju_5F2f0Sa4J54cCarV_u8-af97fpqV4jI-DAduJysGMqxltHOHBnJN7KcOj3Un4-3mNCSUUPcBpQdEFbhRtfkG7MJWQSSLXuqBaJ-17Hy482OY51-wI_IjY" />
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-margin-mobile md:px-margin-desktop">
           <h1 className="font-display-lg text-display-lg md:text-[64px] text-white max-w-3xl mb-stack-md">Reserve Your Table</h1>
@@ -25,7 +26,7 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-section-gap items-center">
           <div className="space-y-stack-lg order-2 lg:order-1 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             <span className="font-label-caps text-label-caps text-secondary uppercase tracking-[0.2em]">Exclusivity Redefined</span>
-            <h2 className="font-display-lg text-display-lg text-primary">Your Personal Maître d', Digitally Perfected</h2>
+            <h2 className="font-display-lg text-display-lg text-primary">Your Personal Maître d&apos;, Digitally Perfected</h2>
             <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
               Experience the next evolution of hospitality. Our AI-powered virtual concierge anticipates your preferences, from dietary nuances to preferred seating, ensuring every reservation is as unique as your palate.
             </p>
@@ -49,7 +50,7 @@ export default function Home() {
           </div>
           <div className="relative order-1 lg:order-2 animate-fade-in">
             <div className="aspect-[4/5] bg-surface-container-low relative overflow-hidden group rounded-sm shadow-2xl">
-              <img className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQrfwUAsRS0GuRAoJ8bFcahXx6hS3mVzdv-ksTzXaV8hfaNRDsA0zk7KHts7iOdhdad7T_IETpj_WI-PphEpsGUY8pK1mINIyGTv1eZX0neltoBaBoMCltR8jCDFayt6LOm9q_lnOVzBSxkcTUI3k93Iwog5fWBUgfSPHBGDXzHB1-fGRqOZ6a2d2B8u9j61IXUINW2S7OAg4G6yYvIPyBN7hRR-m9URKgRONskLLKWwUkDYxlh_uVWdZo0c8FNBz4WWlBVJLJ9iY" alt="Concierge" />
+              <Image fill className="object-cover transition-transform duration-1000 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQrfwUAsRS0GuRAoJ8bFcahXx6hS3mVzdv-ksTzXaV8hfaNRDsA0zk7KHts7iOdhdad7T_IETpj_WI-PphEpsGUY8pK1mINIyGTv1eZX0neltoBaBoMCltR8jCDFayt6LOm9q_lnOVzBSxkcTUI3k93Iwog5fWBUgfSPHBGDXzHB1-fGRqOZ6a2d2B8u9j61IXUINW2S7OAg4G6yYvIPyBN7hRR-m9URKgRONskLLKWwUkDYxlh_uVWdZo0c8FNBz4WWlBVJLJ9iY" alt="Concierge" />
               <div className="absolute inset-0 ring-1 ring-inset ring-white/20 pointer-events-none group-hover:ring-secondary/50 transition-colors duration-500"></div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
@@ -69,14 +70,14 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter auto-rows-[300px]">
             <div className="md:col-span-8 md:row-span-2 relative overflow-hidden luxury-shadow group rounded-sm border border-outline-variant/30">
-              <img className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCILbkAyaCTdrM8SsILOLRmmJgAIshZ2gcxtx5-5NKf59SzI0xY9gK0iHzKfIRRu2rOtw-Y5jjvvxaRwSz1WrZGws_w30zzB0ORen8rTrVmgwbVGHebJ48yR3GI5wd2nn4iou3aAysYV0J4mjyJa-UVLTSKfRkU1syJa0SVtIb7myEvsqmqudQ7OfkUA2VRBzJ6npoE6IywgkOWXgfo2-HGA1NQycQaAyiq930kbFExd53cavlqEbZipt_qg6_D9GIif48M60wpTWU" alt="The Kitchen" />
+              <Image fill className="object-cover transition-transform duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCILbkAyaCTdrM8SsILOLRmmJgAIshZ2gcxtx5-5NKf59SzI0xY9gK0iHzKfIRRu2rOtw-Y5jjvvxaRwSz1WrZGws_w30zzB0ORen8rTrVmgwbVGHebJ48yR3GI5wd2nn4iou3aAysYV0J4mjyJa-UVLTSKfRkU1syJa0SVtIb7myEvsqmqudQ7OfkUA2VRBzJ6npoE6IywgkOWXgfo2-HGA1NQycQaAyiq930kbFExd53cavlqEbZipt_qg6_D9GIif48M60wpTWU" alt="The Kitchen" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-stack-lg opacity-90 group-hover:opacity-100 transition-opacity duration-500">
                 <span className="font-label-caps text-label-caps text-secondary-fixed mb-2 uppercase tracking-widest translate-y-4 group-hover:translate-y-0 transition-transform duration-500">The Kitchen</span>
                 <h3 className="font-headline-sm text-headline-sm text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">Artistry in Every Plate</h3>
               </div>
             </div>
             <div className="md:col-span-4 relative overflow-hidden luxury-shadow group rounded-sm border border-outline-variant/30">
-              <img className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYrQnGaTafquF6UXWYhuf3wD1LseVsRpVB5m15DjWS8WdzYWDFhoJezC8vkUe-jO46krEkN2ciMEArKGF7uDqWmCWcC4h46Hp-7Uu6QSN12zPmT8n2TRRbU9WxWD_-HeeH5-D37d-4h3zaKIiYz0FoiVqadrUk0P_fOR0OmqVNsh8RJjptWaBlV8-3Bji8jQ9XT-RkzVA42NFZRe-fESOtDjSJQtjfzsKRa7Nw7-gy3WwlOuMYmx0nl3QeIXZMMGVVZDOOE1cXOL0" alt="The Cellar" />
+              <Image fill className="object-cover transition-transform duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYrQnGaTafquF6UXWYhuf3wD1LseVsRpVB5m15DjWS8WdzYWDFhoJezC8vkUe-jO46krEkN2ciMEArKGF7uDqWmCWcC4h46Hp-7Uu6QSN12zPmT8n2TRRbU9WxWD_-HeeH5-D37d-4h3zaKIiYz0FoiVqadrUk0P_fOR0OmqVNsh8RJjptWaBlV8-3Bji8jQ9XT-RkzVA42NFZRe-fESOtDjSJQtjfzsKRa7Nw7-gy3WwlOuMYmx0nl3QeIXZMMGVVZDOOE1cXOL0" alt="The Cellar" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-stack-md opacity-90 group-hover:opacity-100 transition-opacity duration-500">
                 <h3 className="font-headline-sm text-headline-sm text-white translate-y-2 group-hover:translate-y-0 transition-transform duration-500">The Cellar</h3>
               </div>
@@ -85,7 +86,7 @@ export default function Home() {
               <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-stack-lg">
                 <span className="material-symbols-outlined text-secondary text-5xl mb-4 group-hover:scale-110 transition-transform duration-500 group-hover:rotate-12">stars</span>
                 <h3 className="font-headline-sm text-headline-sm text-primary mb-2">Member Exclusive</h3>
-                <p className="text-on-surface-variant font-body-md mb-6">Priority bookings for the Chef's Table.</p>
+                <p className="text-on-surface-variant font-body-md mb-6">Priority bookings for the Chef&apos;s Table.</p>
                 <Link href="/login" className="text-secondary border-b border-secondary pb-1 font-label-caps text-label-caps hover:text-primary hover:border-primary transition-all duration-300 uppercase tracking-widest">Learn More</Link>
               </div>
             </div>
