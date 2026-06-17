@@ -51,8 +51,31 @@ export default function DashboardClient({
   const [bookingError, setBookingError] = useState('');
   const [reservations, setReservations] = useState(initialReservations);
   const [confirmCancelId, setConfirmCancelId] = useState<string | null>(null);
+  const [cancellingId, setCancellingId] = useState<string | null>(null);
 
   const availableDays = getNextDays(14);
+
+  const handleCancelReservation = async (id: string) => {
+    if (!id) return;
+    setCancellingId(id);
+    try {
+      const response = await fetch('/api/cancel', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id }),
+      });
+      if (!response.ok) throw new Error('Failed to cancel');
+      
+      setReservations((prev: any[]) => prev.filter(r => r.id !== id));
+      setConfirmCancelId(null);
+      track('reservation_cancelled');
+    } catch (error) {
+      console.error('Cancellation failed', error);
+      alert('Unable to cancel your reservation at this time. Please try again.');
+    } finally {
+      setCancellingId(null);
+    }
+  };
 
   // Standard booking handler
   const handleReserve = async () => {
@@ -230,17 +253,15 @@ export default function DashboardClient({
                       {confirmCancelId === res.id ? (
                         <div className="flex-1 flex gap-2">
                           <button 
-                            onClick={() => {
-                              setReservations(prev => prev.filter(r => r.id !== res.id));
-                              setConfirmCancelId(null);
-                              track('reservation_cancelled');
-                            }}
-                            className="flex-1 bg-error text-on-error py-3 font-label-caps text-label-caps hover:opacity-90 transition-opacity rounded-sm">
-                            CONFIRM
+                            onClick={() => handleCancelReservation(res.id)}
+                            disabled={cancellingId === res.id}
+                            className="flex-1 bg-error text-on-error py-3 font-label-caps text-label-caps hover:opacity-90 transition-opacity rounded-sm disabled:opacity-50">
+                            {cancellingId === res.id ? 'CANCELLING...' : 'CONFIRM'}
                           </button>
                           <button 
                             onClick={() => setConfirmCancelId(null)}
-                            className="flex-1 border border-outline-variant py-3 font-label-caps text-label-caps hover:bg-surface-container rounded-sm">
+                            disabled={cancellingId === res.id}
+                            className="flex-1 border border-outline-variant py-3 font-label-caps text-label-caps hover:bg-surface-container rounded-sm disabled:opacity-50">
                             BACK
                           </button>
                         </div>
