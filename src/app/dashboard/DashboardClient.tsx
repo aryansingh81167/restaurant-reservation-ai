@@ -100,10 +100,15 @@ export default function DashboardClient({
     }
   ]);
   const [isTyping, setIsTyping] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTo({
+        top: chatContainerRef.current.scrollHeight,
+        behavior: "smooth"
+      });
+    }
   };
 
   useEffect(() => {
@@ -399,7 +404,7 @@ export default function DashboardClient({
             </div>
           ) : (
             <div className="flex flex-col h-[500px]">
-              <div className="flex-1 overflow-y-auto p-stack-md space-y-stack-md custom-scrollbar">
+              <div ref={chatContainerRef} className="flex-1 overflow-y-auto p-stack-md space-y-stack-md custom-scrollbar">
                 {messages.map((msg, i) => (
                   <div key={i} className={`flex gap-3 animate-fade-in-up ${msg.role === 'user' ? 'justify-end' : ''}`} style={{ animationDuration: '0.4s' }}>
                     {msg.role === 'assistant' && (
@@ -425,7 +430,7 @@ export default function DashboardClient({
                     </div>
                   </div>
                 )}
-                <div ref={messagesEndRef} />
+
               </div>
 
               <div className="p-stack-md border-t border-outline-variant/20 bg-white/40 dark:bg-white/5 backdrop-blur-md">

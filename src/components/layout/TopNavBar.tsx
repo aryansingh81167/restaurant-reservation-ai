@@ -76,6 +76,7 @@ export default function TopNavBar() {
                   <div className="absolute right-0 top-12 bg-surface-container-low border border-outline-variant/30 shadow-2xl rounded-sm py-2 min-w-[180px] z-50 animate-fade-in">
                     <Link href="/dashboard" onClick={() => setShowMenu(false)} className="block px-4 py-3 font-label-caps text-[11px] text-on-surface hover:bg-surface-container-high transition-colors tracking-widest uppercase">My Dashboard</Link>
                     <Link href="/dashboard/concierge" onClick={() => setShowMenu(false)} className="block px-4 py-3 font-label-caps text-[11px] text-on-surface hover:bg-surface-container-high transition-colors tracking-widest uppercase">AI Concierge</Link>
+                    <Link href="/dashboard/settings" onClick={() => setShowMenu(false)} className="block px-4 py-3 font-label-caps text-[11px] text-on-surface hover:bg-surface-container-high transition-colors tracking-widest uppercase">Account Settings</Link>
                     <div className="border-t border-outline-variant/30 my-1"></div>
                     <button onClick={handleSignOut} className="block w-full text-left px-4 py-3 font-label-caps text-[11px] text-error hover:bg-error-container transition-colors tracking-widest uppercase">Sign Out</button>
                   </div>
@@ -103,6 +104,7 @@ export default function TopNavBar() {
             <Link href="/menu" onClick={() => setShowMobileNav(false)} className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface hover:text-primary transition-colors py-2">Menu</Link>
             <Link href="/dashboard" onClick={() => setShowMobileNav(false)} className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface hover:text-primary transition-colors py-2">Reservations</Link>
             <Link href="/dashboard" onClick={() => setShowMobileNav(false)} className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface hover:text-primary transition-colors py-2">My Bookings</Link>
+            <Link href="/dashboard/settings" onClick={() => setShowMobileNav(false)} className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface hover:text-primary transition-colors py-2">Account Settings</Link>
             {user ? (
               <button onClick={handleSignOut} className="font-label-caps text-label-caps uppercase tracking-widest text-error hover:text-on-error-container transition-colors py-2 text-left">Sign Out</button>
             ) : (
