@@ -1,5 +1,6 @@
 import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
+import { Suspense } from 'react';
 import DashboardClient from './DashboardClient';
 
 export default async function DashboardPage() {
@@ -25,10 +26,12 @@ export default async function DashboardPage() {
     .order('date', { ascending: false });
 
   return (
-    <DashboardClient 
-      user={user} 
-      preferences={preferences || {}} 
-      reservations={reservations || []} 
-    />
+    <Suspense fallback={<div className="p-8 text-center text-on-surface-variant font-label-caps tracking-widest animate-pulse">Loading Dossier...</div>}>
+      <DashboardClient 
+        user={user} 
+        preferences={preferences || {}} 
+        reservations={reservations || []} 
+      />
+    </Suspense>
   );
 }

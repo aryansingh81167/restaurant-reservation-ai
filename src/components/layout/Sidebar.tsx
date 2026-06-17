@@ -34,8 +34,8 @@ export default function Sidebar({ userEmail }: { userEmail: string }) {
     { href: "/dashboard", icon: "calendar_month", label: "Reservations" },
     { href: "/dashboard?ai=true", icon: "temp_preferences_custom", label: "AI Concierge" },
     { href: "/dashboard/settings", icon: "manage_accounts", label: "Account Settings" },
-    { href: "/dashboard", icon: "notifications", label: "Notifications" },
-    { href: "/dashboard", icon: "mail", label: "Contact" },
+    { href: "#notifications", icon: "notifications", label: "Notifications" },
+    { href: "#contact", icon: "mail", label: "Contact" },
   ];
 
   return (
@@ -52,26 +52,29 @@ export default function Sidebar({ userEmail }: { userEmail: string }) {
       <aside 
         className={`fixed top-0 left-0 h-screen z-50 bg-background border-r border-outline-variant/30 flex flex-col transition-transform duration-300 ease-in-out w-[260px] ${isCollapsed ? '-translate-x-full' : 'translate-x-0'} shadow-2xl lg:shadow-none`}
       >
-        <div className="p-4 flex flex-col h-full w-[260px]">
+        <div className="px-4 pb-4 pt-6 flex flex-col h-full w-[260px] relative">
           {/* Top Controls */}
-          <div className="flex items-center justify-end mb-8 pt-4 px-2">
-            <button 
-              onClick={() => setIsCollapsed(true)}
-              className="p-2 hover:bg-surface-container rounded-sm transition-colors text-on-surface-variant hover:text-primary flex-shrink-0 flex items-center justify-center"
-              title="Close sidebar"
-            >
-              <span className="material-symbols-outlined text-[20px]">menu_open</span>
-            </button>
-          </div>
+          <button 
+            onClick={() => setIsCollapsed(true)}
+            className="absolute top-6 right-4 p-2 hover:bg-surface-container rounded-sm transition-colors text-on-surface-variant hover:text-primary flex-shrink-0 flex items-center justify-center z-10"
+            title="Close sidebar"
+          >
+            <span className="material-symbols-outlined text-[20px]">menu_open</span>
+          </button>
 
-          <div className="mb-6 pb-6 border-b border-outline-variant/20 px-2">
-            <h2 className="font-headline-sm text-[15px] font-bold text-primary mb-1">Concierge</h2>
+          <div className="mb-6 pb-6 border-b border-outline-variant/20 px-2 pt-0 mt-0">
+            <h2 className="font-display-sm text-[32px] leading-tight font-bold text-primary mb-1 tracking-tight">Concierge</h2>
             <p className="font-body-xs text-[12px] text-on-surface-variant truncate opacity-80">{userEmail}</p>
           </div>
 
           <nav className="flex flex-col space-y-1 flex-1 overflow-y-auto custom-scrollbar px-1">
             {links.map((link, idx) => {
-              const isActive = link.href === '/dashboard' 
+              // Special handling for ai=true and hash links
+              const isActive = link.href.includes('ai=true') 
+                ? false // AI handled by dashboard state, not active here to prevent overlap
+                : link.href.startsWith('#')
+                ? false
+                : link.href === '/dashboard' 
                 ? pathname === '/dashboard' 
                 : pathname.startsWith(link.href);
                 
