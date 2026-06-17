@@ -49,11 +49,7 @@ export default function TopNavBar() {
             <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-secondary transition-all duration-300 group-hover:w-full"></span>
           </Link>
           <Link href="/dashboard" className="text-on-surface-variant font-medium hover:text-primary transition-all duration-300 font-label-caps text-label-caps uppercase tracking-widest relative group">
-            Reservations
-            <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-secondary transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-          <Link href="/dashboard" className="text-on-surface-variant font-medium hover:text-primary transition-all duration-300 font-label-caps text-label-caps uppercase tracking-widest relative group">
-            My Bookings
+            My Dossier
             <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-secondary transition-all duration-300 group-hover:w-full"></span>
           </Link>
         </nav>
@@ -102,8 +98,7 @@ export default function TopNavBar() {
         <div className="md:hidden bg-surface-container-low border-t border-outline-variant/30 animate-fade-in">
           <nav className="flex flex-col px-margin-mobile md:px-margin-desktop py-4 space-y-4">
             <Link href="/menu" onClick={() => setShowMobileNav(false)} className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface hover:text-primary transition-colors py-2">Menu</Link>
-            <Link href="/dashboard" onClick={() => setShowMobileNav(false)} className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface hover:text-primary transition-colors py-2">Reservations</Link>
-            <Link href="/dashboard" onClick={() => setShowMobileNav(false)} className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface hover:text-primary transition-colors py-2">My Bookings</Link>
+            <Link href="/dashboard" onClick={() => setShowMobileNav(false)} className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface hover:text-primary transition-colors py-2">My Dossier</Link>
             <Link href="/dashboard/settings" onClick={() => setShowMobileNav(false)} className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface hover:text-primary transition-colors py-2">Account Settings</Link>
             {user ? (
               <button onClick={handleSignOut} className="font-label-caps text-label-caps uppercase tracking-widest text-error hover:text-on-error-container transition-colors py-2 text-left">Sign Out</button>
